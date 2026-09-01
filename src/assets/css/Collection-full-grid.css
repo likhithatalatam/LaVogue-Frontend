@@ -1,0 +1,138 @@
+.productgrid_page .categories ul li a:hover {
+  color: #818494;
+}
+.productgrid_page .sub_container {
+  color: black;
+  background-color: #f2f2f2;
+  padding-left: 120px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.productgrid_page .sub_container h3 {
+  margin: 0px;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.productgrid_page .sub1 {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  padding-left: 20px;
+}
+.productgrid_page .sub1 p {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.productgrid_page .sub1 i {
+  margin-right: 5px;
+}
+.productgrid_page .main-container {
+  /* position: absolute;
+  top: 12.6%;
+  z-index: -1;
+  width: 100%;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column; */
+  position: relative;
+  width: 100%;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.productgrid_page .sub-container2 {
+  padding-top: 78px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.productgrid_page .sort-div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #f2f2f2;
+  width: 82%;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 50px;
+}
+.productgrid_page .grid-icons button {
+  padding: 3px 9px;
+  border: 1px solid #d1d1d1;
+  background-color: white;
+}
+.productgrid_page .grid-icons button i {
+  font-size: 25px;
+  color: grey;
+}
+.productgrid_page .sorting1 select {
+  padding: 10px 37px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+.productgrid_page .sorting1 {
+  margin: 0 35px;
+}
+.productgrid_page .sorting2 select {
+  padding: 10px 15px;
+  width: 222px;
+  border: 1px solid #d1d1d1;
+  outline: none;
+}
+.productgrid_page .sort-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.productgrid_page .sort-p p {
+  margin: 13px 9px;
+}
+.productgrid_page .collection-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.productgrid_page .latest-collection-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 40px 0px;
+}
+.productgrid_page .latest-collection-cards img {
+  width: 266px;
+  height: 284px;
+}
+.productgrid_page .card1 {
+  width: 266px;
+  border: 1px solid rgb(214, 214, 214);
+  margin: 20px 27px;
+  height: 429px;
+}
+.productgrid_page .card1 h5 {
+  text-align: center;
+  margin: 20px 0;
+}
+.productgrid_page .card1 h6 {
+  margin: 15px;
+  text-align: center;
+}
+.productgrid_page .rating-icons {
+  margin: 5px;
+  color: gold;
+  text-align: center;
+}
+.productgrid_page .section {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+}

@@ -1,0 +1,255 @@
+.main-container {
+  /* position: absolute;
+  top: 12.6%;
+  z-index: -1;
+  width: 100%; */
+  position: relative;
+  width: 100%;
+  font-family: sans-serif;
+}
+.checkoutpage .sub_container {
+  color: black;
+  background-color: #f2f2f2;
+  padding-left: 120px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.checkoutpage .sub_container2 {
+  padding-left: 120px;
+  margin: 86px 0px;
+}
+.checkoutpage .sub_container h3 {
+  margin: 0px;
+  padding-top: 20px;
+  padding-left: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+.checkoutpage .sub1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: baseline;
+  padding-left: 20px;
+}
+.checkoutpage .sub1 p {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+.checkoutpage .sub_container2 .sub_2 {
+  width: 87%;
+  height: 63px;
+  border: 1px solid rgb(208, 202, 202);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px;
+  padding-left: 23px;
+}
+.checkoutpage .sub_container2 .sub_2 p {
+  margin: 0;
+}
+.checkoutpage .sub_container2 .sub_2 a {
+  margin: 0 10px;
+  color: red;
+}
+.checkoutpage .bill2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.checkoutpage .bill2 input {
+  padding: 15px 19px;
+  width: 266px;
+  margin: 18px 0px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+.checkoutpage .bill2-2 input {
+  padding: 15px;
+  width: 550px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+.checkoutpage .bill3 input {
+  padding: 15px;
+  margin: 16px 0px;
+  width: 266px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+.checkoutpage .bill4 input {
+  padding: 15px 10px;
+  margin: 10px 0px;
+  width: 266px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+.checkoutpage .opt {
+  padding: 24px 0px;
+}
+.checkoutpage .bill h3 {
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-decoration: overline;
+}
+.checkoutpage .bill {
+  width: 550px;
+}
+.checkoutpage .diff {
+  width: 550px;
+}
+.checkoutpage .bill3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.checkoutpage .bill4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.checkoutpage .order h3 {
+  text-decoration: underline;
+}
+.checkoutpage .order {
+  width: 557px;
+}
+.checkoutpage .ord1 {
+  height: 383px;
+  background-color: #f8f8f8;
+}
+.checkoutpage .order1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+}
+.checkoutpage .bd {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.checkoutpage .order3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 37px;
+}
+.checkoutpage .order4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 37px;
+}
+.checkoutpage .order5 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 37px;
+}
+.checkoutpage .order2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 38px;
+}
+.checkoutpage .diff1 textarea {
+  min-width: 530px;
+  min-height: 249px;
+  outline: none;
+  background-color: #f9f9f9;
+  border: 1px solid rgb(213, 213, 213);
+  padding: 23px 28px;
+}
+.checkoutpage .diff h3 {
+  text-decoration: overline;
+  letter-spacing: 2px;
+  font-size: 22px;
+}
+.checkoutpage .Thirdpart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 66px 0px;
+}
+.checkoutpage .order h3 {
+  text-decoration: overline;
+  letter-spacing: 2px;
+  font-size: 22px;
+  margin-bottom: 28px;
+}
+.checkoutpage .payment h3 {
+  text-decoration: overline;
+  letter-spacing: 2px;
+  font-size: 22px;
+  margin-bottom: 28px;
+}
+.checkoutpage .pay1 {
+  background-color: #f8f8f8;
+}
+.checkoutpage .pay1 .p {
+  padding: 33px 33px;
+}
+.checkoutpage .select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 31px;
+}
+.checkoutpage .payment {
+  width: 505px;
+}
+.checkoutpage .in {
+  margin: 10px 0px;
+}
+.checkoutpage .in input {
+  margin-right: 12px;
+}
+.checkoutpage .sub-button {
+  border-radius: 20px;
+  width: 445px;
+  padding: 10px;
+  margin: 29.7px 30px;
+  background-color: #0c0908;
+  color: white;
+}
+.checkoutpage .diff1 {
+  margin-top: 21px;
+}
+.checkoutpage .main_container {
+  position: absolute;
+  top: 12%;
+  z-index: -1;
+  width: 100%;
+}
+.checkoutpage #lavogue {
+  color: rgb(187, 147, 187);
+}
+.checkoutpage .sub1 i {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 6px;
+}
+.checkoutpage .sub_container2 .sub_2 i {
+  margin-right: 11px;
+  font-size: 21px;
+}
+.checkoutpage .diff-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.checkoutpage .diff-head input {
+  margin: 10px;
+}

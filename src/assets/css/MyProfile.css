@@ -1,0 +1,1449 @@
+/* =====================================================
+   GLOBAL RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: #ffffff;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   LOGO HEADER
+===================================================== */
+
+.logo-nav {
+  background-color: #f0ebff;
+  height: 86px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo-nav img {
+  width: 180px;
+  height: auto;
+  margin-left: 45px;
+  position: relative;
+  top: 20px;
+  left: -28px;
+}
+
+/* =====================================================
+   MAIN PAGE
+===================================================== */
+
+.myprofile {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding-top: 86px;
+  overflow: hidden;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.myprofile .main-container {
+  display: flex;
+  gap: 25px;
+
+  width: 100%;
+  height: calc(100vh - 86px);
+
+  padding: 25px 30px;
+
+  align-items: stretch;
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   SIDEBAR
+===================================================== */
+.myprofile .side-header {
+  width: 300px;
+  height: 100%;
+
+  flex-shrink: 0;
+
+  background-color: white;
+  border-radius: 14px;
+
+  padding: 20px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+}
+
+/* =====================================================
+   PROFILE IMAGE
+===================================================== */
+
+.myprofile .profile-img {
+  text-align: center;
+
+  margin: 15px 0;
+}
+
+.myprofile .profile-img img {
+  width: 108px;
+  height: 108px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+
+  border: 3px solid #a07adc;
+}
+
+/* =====================================================
+   ACCOUNT NAME
+===================================================== */
+
+.myprofile .side-header h4 {
+  text-align: center;
+
+  font-size: 17px;
+
+  margin: 10px 0 25px;
+
+  color: #555;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   SIDEBAR LIST
+===================================================== */
+
+.myprofile .List {
+  width: 100%;
+}
+
+.myprofile .List ul {
+  padding: 0;
+  margin: 0;
+
+  list-style: none;
+}
+
+.myprofile .div1 {
+  margin: 8px 0;
+
+  border-radius: 8px;
+
+  transition: 0.25s;
+
+  border-left: 4px solid transparent;
+}
+
+.myprofile .div1 a {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 15px 18px;
+
+  text-decoration: none;
+
+  color: #555;
+
+  font-size: 15px;
+
+  cursor: pointer;
+}
+
+.myprofile .div1 li {
+  list-style: none;
+}
+
+/* =====================================================
+   ACTIVE SIDEBAR
+   IMPORTANT:
+   NO :first-child HERE
+===================================================== */
+
+.myprofile .div1.active-menu {
+  background-color: #f0ebff;
+
+  border-left: 4px solid #a07adc;
+}
+
+.myprofile .div1.active-menu a {
+  color: #7c57b5;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   HOVER
+===================================================== */
+
+.myprofile .div1:hover {
+  background-color: #f0ebff;
+
+  transform: translateX(4px);
+
+  border-left: 4px solid #a07adc;
+}
+
+.myprofile .div1:hover a {
+  color: #a07adc;
+}
+
+/* =====================================================
+   RIGHT CONTENT
+===================================================== */
+
+.myprofile .sub-container {
+  flex: 1;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+
+  background-color: white;
+  border-radius: 14px;
+
+  padding: 25px;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   TOP ROW
+===================================================== */
+
+.myprofile .top-row {
+  width: 100%;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 25px;
+}
+.myprofile .sub-container::-webkit-scrollbar {
+  width: 7px;
+}
+
+.myprofile .sub-container::-webkit-scrollbar-track {
+  background: #f2f2f2;
+  border-radius: 10px;
+}
+
+.myprofile .sub-container::-webkit-scrollbar-thumb {
+  background: #c5b2e8;
+  border-radius: 10px;
+}
+
+.myprofile .sub-container::-webkit-scrollbar-thumb:hover {
+  background: #a07adc;
+}
+/* =====================================================
+   HEADING
+===================================================== */
+
+.myprofile .heading h4 {
+  font-size: 24px;
+
+  color: #222;
+
+  border-bottom: 2px solid #eeeeee;
+
+  padding-bottom: 10px;
+
+  margin: 0;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.myprofile .back-btn {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  font-size: 14px;
+
+  color: #666;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.myprofile .back-btn i {
+  font-size: 16px;
+}
+
+.myprofile .back-btn:hover {
+  color: #a07adc;
+
+  transform: translateX(-3px);
+}
+
+/* =====================================================
+   PROFILE FORM
+===================================================== */
+
+.myprofile form {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 25px;
+
+  margin-top: 20px;
+}
+
+.myprofile form > div {
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* =====================================================
+   LABEL
+===================================================== */
+
+.myprofile label {
+  font-size: 14px;
+
+  color: #555;
+
+  margin-bottom: 7px;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   INPUT
+===================================================== */
+
+.myprofile input,
+.myprofile textarea {
+  width: 100%;
+
+  padding: 13px;
+
+  border-radius: 8px;
+
+  border: 1px solid #ddd;
+
+  outline: none;
+
+  transition: 0.3s;
+
+  font-size: 14px;
+
+  font-family: inherit;
+
+  background: #ffffff;
+}
+
+.myprofile input:hover,
+.myprofile textarea:hover {
+  border-color: #bbb;
+}
+
+.myprofile input:focus,
+.myprofile textarea:focus {
+  border-color: #a07adc;
+
+  box-shadow: 0 0 5px rgba(160, 122, 220, 0.25);
+}
+
+.myprofile input[readonly] {
+  background: #fafafa;
+
+  color: #555;
+
+  cursor: not-allowed;
+}
+
+.myprofile textarea {
+  resize: none;
+}
+
+/* =====================================================
+   PROFILE BUTTON
+===================================================== */
+
+.myprofile .btn-div {
+  grid-column: span 2;
+}
+
+.myprofile .btn-div button {
+  width: 100%;
+
+  padding: 13px;
+
+  background-color: #a07adc;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 8px;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+.myprofile .btn-div button:hover {
+  background-color: #8b63d2;
+}
+
+.myprofile .btn-div button:disabled {
+  opacity: 0.7;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   ORDERS TABLE WRAPPER
+===================================================== */
+
+.myprofile .orders-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #e8e8e8;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+/* =====================================================
+   ORDERS TABLE
+===================================================== */
+
+.myprofile .orders-table {
+  width: 100%;
+
+  min-width: 900px;
+
+  border-collapse: collapse;
+
+  table-layout: auto;
+
+  background: #ffffff;
+}
+
+/* =====================================================
+   TABLE HEADER
+===================================================== */
+
+.myprofile .orders-table thead tr {
+  height: 58px;
+
+  background-color: #f6f3ff;
+
+  border-bottom: 1px solid #e4def5;
+}
+
+.myprofile .orders-table th {
+  padding: 17px 14px;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #444;
+
+  white-space: nowrap;
+
+  border-right: 1px solid #eee;
+}
+
+.myprofile .orders-table th:last-child {
+  border-right: none;
+}
+
+/* =====================================================
+   TABLE BODY
+===================================================== */
+
+.myprofile .orders-table tbody tr {
+  height: 65px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  transition: 0.2s;
+}
+
+.myprofile .orders-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.myprofile .orders-table tbody tr:hover {
+  background-color: #faf7ff;
+}
+
+/* =====================================================
+   TABLE CELLS
+===================================================== */
+
+.myprofile .orders-table td {
+  padding: 15px 14px;
+
+  text-align: center;
+
+  font-size: 14px;
+
+  color: #333;
+
+  border-right: 1px solid #eeeeee;
+
+  white-space: nowrap;
+
+  vertical-align: middle;
+}
+
+.myprofile .orders-table td:last-child {
+  border-right: none;
+}
+
+/* =====================================================
+   SERIAL NUMBER
+===================================================== */
+
+.myprofile .serial-number {
+  color: #777;
+
+  font-weight: 500;
+}
+
+/* =====================================================
+   ORDER ID
+===================================================== */
+
+.myprofile .order-id {
+  font-weight: 600;
+
+  color: #333;
+}
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+.myprofile .order-total {
+  font-weight: 600;
+
+  color: #222;
+}
+
+/* =====================================================
+   PAYMENT
+===================================================== */
+
+.myprofile .payment-text {
+  color: #555;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   STATUS BADGES
+===================================================== */
+
+.myprofile .order-status {
+  display: inline-flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  min-width: 88px;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+/* PENDING */
+
+.myprofile .order-status.pending {
+  background: #fff3cd;
+
+  color: #856404;
+}
+
+/* CONFIRMED */
+
+.myprofile .order-status.confirmed {
+  background: #e7f1ff;
+
+  color: #0d6efd;
+}
+
+/* PROCESSING */
+
+.myprofile .order-status.processing {
+  background: #e8e0ff;
+
+  color: #6f42c1;
+}
+
+/* SHIPPED */
+
+.myprofile .order-status.shipped {
+  background: #dff3ff;
+
+  color: #087990;
+}
+
+/* DELIVERED */
+
+.myprofile .order-status.delivered {
+  background: #d1e7dd;
+
+  color: #146c43;
+}
+
+/* CANCELLED */
+
+.myprofile .order-status.cancelled {
+  background: #f8d7da;
+
+  color: #842029;
+}
+
+/* =====================================================
+   VIEW BUTTON
+===================================================== */
+
+.myprofile .order-view-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  min-width: 78px;
+
+  height: 36px;
+
+  padding: 0 14px;
+
+  border: 1px solid #a07adc;
+
+  border-radius: 6px;
+
+  background: #ffffff;
+
+  color: #7c57b5;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.3s;
+}
+
+.myprofile .order-view-btn:hover {
+  background: #a07adc;
+
+  color: #ffffff;
+
+  border-color: #a07adc;
+
+  transform: translateY(-1px);
+}
+
+.myprofile .order-view-btn i {
+  font-size: 14px;
+}
+
+/* =====================================================
+   NO ORDERS
+===================================================== */
+
+.myprofile .no-orders-container {
+  width: 100%;
+
+  text-align: center;
+
+  padding: 80px 20px;
+}
+
+.myprofile .no-orders-container > i {
+  font-size: 55px;
+
+  color: #a07adc;
+}
+
+.myprofile .no-orders-container h4 {
+  margin-top: 20px;
+
+  margin-bottom: 10px;
+
+  font-size: 20px;
+
+  color: #333;
+}
+
+.myprofile .no-orders-container p {
+  color: #777;
+
+  margin-bottom: 20px;
+}
+
+.myprofile .no-orders-container button {
+  padding: 11px 25px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #a07adc;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+
+  transition: 0.3s;
+}
+
+.myprofile .no-orders-container button:hover {
+  background: #8b63d2;
+}
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.orders-loading {
+  min-height: 100vh;
+
+  width: 100%;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background: #ffffff;
+}
+
+.orders-loading h4 {
+  margin-top: 15px;
+
+  color: #555;
+
+  font-weight: 400;
+}
+
+/* =====================================================
+   LOADING SPINNER
+===================================================== */
+
+.loading-spinner {
+  width: 38px;
+
+  height: 38px;
+
+  border: 4px solid #eeeeee;
+
+  border-top: 4px solid #a07adc;
+
+  border-radius: 50%;
+
+  animation: orderSpinner 0.8s linear infinite;
+}
+
+@keyframes orderSpinner {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =====================================================
+   ORDER DETAILS
+===================================================== */
+
+.order-details-container {
+  padding-bottom: 45px !important;
+}
+
+/* =====================================================
+   ORDER SUMMARY
+===================================================== */
+
+.order-summary-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 30px;
+}
+
+.summary-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border: 1px solid #ececec;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  min-height: 90px;
+
+  transition: 0.25s;
+}
+
+.summary-card:hover {
+  border-color: #d8c8f2;
+
+  box-shadow: 0 4px 12px rgba(160, 122, 220, 0.08);
+}
+
+.summary-icon {
+  width: 44px;
+
+  height: 44px;
+
+  min-width: 44px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 10px;
+
+  background: #f0ebff;
+
+  color: #8b63d2;
+
+  font-size: 19px;
+}
+
+.summary-card div:last-child {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  min-width: 0;
+}
+
+.summary-card span:first-child {
+  font-size: 11px;
+
+  color: #777;
+
+  font-weight: 600;
+
+  letter-spacing: 0.4px;
+}
+
+.summary-card strong {
+  color: #333;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  word-break: break-word;
+}
+
+/* =====================================================
+   DETAILS SECTION
+===================================================== */
+
+.details-section {
+  width: 100%;
+
+  border-top: 1px solid #eeeeee;
+
+  margin-top: 25px;
+
+  padding-top: 25px;
+}
+
+/* =====================================================
+   SECTION TITLE
+===================================================== */
+
+.section-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.section-icon {
+  width: 40px;
+
+  height: 40px;
+
+  min-width: 40px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  border-radius: 9px;
+
+  background: #f0ebff;
+
+  color: #8b63d2;
+
+  font-size: 17px;
+}
+
+.section-title h4 {
+  margin: 0;
+
+  color: #333;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  text-transform: none;
+}
+
+.section-title p {
+  margin: 3px 0 0;
+
+  color: #888;
+
+  font-size: 12px;
+}
+
+/* =====================================================
+   CUSTOMER GRID
+===================================================== */
+
+.customer-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 15px 25px;
+}
+
+.detail-item {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  padding: 14px 16px;
+
+  background: #fafafa;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 8px;
+
+  min-width: 0;
+}
+
+.detail-item span {
+  font-size: 11px;
+
+  color: #888;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.3px;
+}
+
+.detail-item strong {
+  color: #333;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  word-break: break-word;
+}
+
+/* =====================================================
+   PRODUCTS TABLE
+===================================================== */
+
+.products-table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+
+  border: 1px solid #e8e8e8;
+
+  border-radius: 10px;
+}
+
+.products-table {
+  width: 100%;
+
+  min-width: 850px;
+
+  border-collapse: collapse;
+
+  background: #ffffff;
+}
+
+.products-table thead tr {
+  background: #f6f3ff;
+
+  border-bottom: 1px solid #e4def5;
+}
+
+.products-table th {
+  padding: 15px 13px;
+
+  text-align: center;
+
+  color: #444;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  text-transform: uppercase;
+
+  white-space: nowrap;
+
+  border-right: 1px solid #eeeeee;
+}
+
+.products-table th:last-child {
+  border-right: none;
+}
+
+.products-table td {
+  padding: 13px;
+
+  text-align: center;
+
+  color: #444;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #eeeeee;
+
+  border-right: 1px solid #eeeeee;
+
+  vertical-align: middle;
+
+  white-space: nowrap;
+}
+
+.products-table td:last-child {
+  border-right: none;
+}
+
+.products-table tbody tr:hover {
+  background: #fcfaff;
+}
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.product-image-box {
+  width: 62px;
+
+  height: 62px;
+
+  margin: auto;
+
+  border-radius: 8px;
+
+  overflow: hidden;
+
+  background: #f5f5f5;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: #aaa;
+}
+
+.product-image-box img {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.product-name {
+  color: #333;
+
+  font-weight: 500;
+}
+
+.product-line-total {
+  font-weight: 600;
+
+  color: #222 !important;
+}
+
+.no-products {
+  padding: 30px !important;
+
+  color: #777 !important;
+}
+
+/* =====================================================
+   PAYMENT GRID
+===================================================== */
+
+.payment-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 20px;
+}
+
+/* =====================================================
+   PRICE SECTION
+===================================================== */
+
+.price-section {
+  padding-bottom: 10px;
+}
+
+.price-box {
+  width: 100%;
+
+  max-width: 450px;
+
+  margin-left: auto;
+
+  padding: 20px;
+
+  border: 1px solid #eeeeee;
+
+  border-radius: 10px;
+
+  background: #fafafa;
+}
+
+.price-row {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 9px 0;
+}
+
+.price-row span {
+  color: #666;
+
+  font-size: 14px;
+}
+
+.price-row strong {
+  color: #333;
+
+  font-size: 14px;
+}
+
+.price-row .deduction {
+  color: #b05a5a;
+}
+
+.price-divider {
+  height: 1px;
+
+  background: #dddddd;
+
+  margin: 10px 0;
+}
+
+.price-row.final-total {
+  padding-top: 14px;
+}
+
+.price-row.final-total span {
+  color: #222;
+
+  font-size: 17px;
+
+  font-weight: 600;
+}
+
+.price-row.final-total strong {
+  color: #7c57b5;
+
+  font-size: 19px;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   ORDER NOT FOUND
+===================================================== */
+
+.order-not-found-icon {
+  font-size: 55px;
+
+  color: #a07adc;
+
+  margin-bottom: 15px;
+}
+
+.details-back-shopping-btn {
+  margin-top: 20px;
+
+  padding: 11px 25px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #a07adc;
+
+  color: #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+}
+
+.details-back-shopping-btn:hover {
+  background: #8b63d2;
+}
+
+/* =====================================================
+   RESPONSIVE - 1100px
+===================================================== */
+
+@media (max-width: 1100px) {
+  .myprofile .side-header {
+    width: 270px;
+
+    min-width: 270px;
+  }
+
+  .myprofile .main-container {
+    /* padding: 20px; */
+  }
+
+  .myprofile .sub-container {
+    /* padding: 25px; */
+  }
+
+  .order-summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   TABLET - 900px
+===================================================== */
+
+@media (max-width: 900px) {
+  .logo-nav {
+    height: 85px;
+  }
+
+  .logo-nav img {
+    width: 150px;
+
+    margin-left: 25px;
+  }
+
+  .myprofile {
+    padding-top: 105px;
+  }
+
+  .myprofile .main-container {
+    flex-direction: column;
+
+    padding: 15px;
+  }
+
+  .myprofile .side-header {
+    width: 100%;
+
+    min-width: 100%;
+  }
+
+  .myprofile .sub-container {
+    width: 100%;
+
+    padding: 20px;
+  }
+
+  .myprofile form {
+    grid-template-columns: 1fr;
+  }
+
+  .myprofile .btn-div {
+    grid-column: span 1;
+  }
+
+  .myprofile .orders-table-wrapper {
+    width: 100%;
+  }
+
+  .customer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =====================================================
+   MOBILE - 600px
+===================================================== */
+
+@media (max-width: 600px) {
+  .logo-nav img {
+    width: 135px;
+
+    margin-left: 18px;
+  }
+
+  .myprofile .main-container {
+    padding: 10px;
+  }
+
+  .myprofile .sub-container {
+    padding: 15px;
+  }
+
+  .myprofile .top-row {
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .myprofile .heading h4 {
+    font-size: 20px;
+  }
+
+  .myprofile .back-btn {
+    font-size: 13px;
+  }
+
+  .myprofile .orders-table {
+    min-width: 850px;
+  }
+
+  .myprofile .orders-table th,
+  .myprofile .orders-table td {
+    padding: 12px 10px;
+  }
+
+  .summary-card {
+    padding: 14px;
+  }
+
+  .section-title h4 {
+    font-size: 16px;
+  }
+
+  .price-box {
+    max-width: 100%;
+  }
+}

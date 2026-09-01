@@ -1,0 +1,121 @@
+.contact_page .main-container {
+  position: absolute;
+  top: 12.6%;
+  z-index: -1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.contact_page .heading-div {
+  color: black;
+  background-color: #f2f2f2;
+  padding-left: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.contact_page .heading-div h3 {
+  margin: 0px;
+  padding-top: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+  font-weight: 650;
+}
+.contact_page .sub {
+  display: flex;
+  flex-direction: row;
+  margin: 14px 0px;
+}
+.contact_page .sub p {
+  margin-right: 7px;
+  font-size: 17px;
+}
+.contact_page .sub i {
+  margin-right: 7px;
+}
+.contact_page .map {
+  padding: 143px;
+  padding-top: 106px;
+  padding-left: 142px;
+  padding-right: 142px;
+}
+.contact_page .heading h3 {
+  text-decoration: overline;
+  margin-bottom: 25px;
+}
+.contact_page .heading {
+  text-align: center;
+}
+.contact_page .label-input {
+  display: flex;
+  flex-direction: column;
+}
+.contact_page .section {
+  display: flex;
+  flex-direction: column;
+}
+.contact_page .section-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact_page .div1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.contact_page .input-group {
+  align-items: center;
+  justify-content: center;
+}
+.contact_page .label-input {
+  width: 40%;
+  margin: 20px 30px;
+}
+.contact_page .label-input input {
+  padding: 10px 30px;
+  background-color: #f8f8f8;
+  border: 1px solid #d2d2d2;
+  outline: none;
+}
+.contact_page .label-input label {
+  margin: 8px 0;
+}
+.contact_page .message-box {
+  width: 82%;
+}
+.contact_page .message-box label {
+  margin: 10px 0px;
+}
+.contact_page .message-box textarea {
+  min-width: 100%;
+  height: 211px;
+  background-color: #f8f8f8;
+  border: 1px solid #d2d2d2;
+  outline: none;
+}
+.contact_page #sub-btn {
+  width: 13%;
+  padding: 13px;
+  margin-left: 150px ;
+  margin-top: 40px;
+  border-radius: 38px;
+  border: none;
+  background-color: black;
+  color: white;
+}
+.contact_page #sub-btn:hover {
+  width: 13%;
+  padding: 13px;
+  margin-left: 136px;
+  margin-top: 40px;
+  border-radius: 38px;
+  border: none;
+  background-color: #a07adc;
+  transition-duration: 0.3s;
+  color: white;
+}

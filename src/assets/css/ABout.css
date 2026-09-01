@@ -1,0 +1,417 @@
+.aboutpage .sub_container1 {
+  max-width: 600px;
+}
+
+.aboutpage .sub_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.aboutpage .sub2 img {
+  width: 400px;
+}
+
+.aboutpage .sub_container2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.aboutpage .sub3 {
+  max-width: 600px;
+}
+
+.aboutpage body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* logo design */
+.aboutpage .logo {
+  display: flex;
+  align-items: center;
+}
+
+.aboutpage .logo img {
+  width: 184px;
+  height: 57px;
+  margin: 0;
+}
+
+/* navbar-design */
+.aboutpage .navbar-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: white;
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+  top: 0;
+}
+
+.aboutpage .categories {
+  margin: 21px;
+}
+
+.aboutpage .categories ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aboutpage .nav-list {
+  margin: 16px;
+  padding-right: 10px;
+}
+
+.aboutpage .nav-list ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.aboutpage .categories ul li a:hover {
+  color: #818494;
+}
+
+.aboutpage .search-field input {
+  padding: 11px 40px;
+  width: 436px;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 23px;
+  outline: none;
+  font-size: 14px;
+  color: grey;
+}
+
+.aboutpage .search-field {
+  margin: 22px 0px;
+}
+
+.aboutpage .nav-list ul li {
+  padding: 0 5px;
+}
+
+.aboutpage .nav-list ul li i {
+  padding: 5px 12px;
+  font-size: 25px;
+}
+
+.aboutpage .categories li {
+  padding: 5px 25px;
+  font-size: 20px;
+}
+
+.aboutpage .categories li a {
+  text-decoration: none;
+  color: #282c3f;
+}
+
+.aboutpage .nav-list li a {
+  text-decoration: none;
+  color: #282c3f;
+}
+
+.aboutpage .search-field img {
+  width: 36px;
+  height: 19px;
+  position: absolute;
+  top: 32px;
+  left: 47.7%;
+}
+
+.aboutpage .sub_container {
+  width: 100%;
+}
+
+.aboutpage .sub_container img {
+  height: 345px;
+  width: 100%;
+  position: relative;
+}
+
+.aboutpage .laVogue h5 {
+  position: absolute;
+  font-size: 100px;
+  left: 79px;
+  top: 82px;
+  font-family: auto;
+}
+
+.aboutpage .laVogue p {
+  position: absolute;
+  font-size: 21px;
+  left: 196px;
+  top: 216px;
+  font-family: auto;
+}
+
+.aboutpage .sub_container2 {
+  margin: 86px 0px;
+}
+
+.aboutpage .sub_container h3 {
+  margin: 21px 0;
+  font-size: 29px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.aboutpage .sub1 {
+  display: flex;
+  flex-direction: row;
+  width: 420px;
+}
+
+.aboutpage .sub2 {
+  width: 420px;
+}
+
+.aboutpage .sub2 img {
+  width: 420px;
+  height: 386px;
+}
+
+.aboutpage .sub1 img {
+  width: 420px;
+  height: 430px;
+}
+
+.aboutpage .sub1 p {
+  margin-top: 20px;
+  margin-right: 10px;
+}
+
+.aboutpage .sub3 h3 {
+  margin: 14px 0;
+  letter-spacing: 2px;
+}
+
+.aboutpage .sub3 p {
+  padding: 10px 0;
+}
+
+.aboutpage .sub_2 {
+  width: 87%;
+  height: 63px;
+  border: 1px solid rgb(208, 202, 202);
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 20px;
+  padding-left: 23px;
+}
+
+.aboutpage .sub_2 a {
+  margin: 0 10px;
+  color: red;
+}
+
+.aboutpage .bill2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.aboutpage .bill2 input {
+  padding: 15px 19px;
+  width: 213px;
+  margin: 18px 0px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+
+.aboutpage .bill2-2 input {
+  padding: 15px;
+  width: 497px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+
+.aboutpage .bill3 input {
+  padding: 15px;
+  margin: 16px 0px;
+  width: 221px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+
+.aboutpage .bill4 input {
+  padding: 15px 10px;
+  margin: 10px 0px;
+  width: 231px;
+  background-color: #f9f9f9;
+  outline: none;
+  border: 1px solid rgb(213, 213, 213);
+}
+
+.aboutpage .opt {
+  padding: 24px 0px;
+}
+
+.aboutpage .bill h3 {
+  font-family: sans-serif;
+  letter-spacing: 2px;
+  text-decoration: overline;
+}
+
+.aboutpage .bill3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.aboutpage .bill4 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.aboutpage .order h3 {
+  text-decoration: underline;
+}
+
+.aboutpage .order {
+  width: 557px;
+}
+
+.aboutpage .ord1 {
+  width: 111%;
+  height: 383px;
+  background-color: #f8f8f8;
+}
+
+.aboutpage .order1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.aboutpage .bd {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.aboutpage .order3,
+.aboutpage .order4,
+.aboutpage .order5,
+.aboutpage .order2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0px 37px;
+}
+
+.aboutpage .payment h3 {
+  text-decoration: underline;
+}
+
+.aboutpage .diff1 textarea {
+  min-width: 521px;
+  min-height: 249px;
+  outline: none;
+  background-color: #f9f9f9;
+  border: 1px solid rgb(213, 213, 213);
+  padding: 23px 28px;
+}
+
+.aboutpage .diff h3 {
+  text-decoration: overline;
+  letter-spacing: 2px;
+}
+
+.aboutpage .Thirdpart {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin: 66px 0px;
+}
+
+.aboutpage .order h3,
+.aboutpage .payment h3 {
+  text-decoration: overline;
+  letter-spacing: 2px;
+}
+
+.aboutpage .pay1 {
+  background-color: #f8f8f8;
+}
+
+.aboutpage .pay1 .p {
+  padding: 33px 33px;
+}
+
+.aboutpage .select {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 31px;
+}
+
+.aboutpage .payment {
+  width: 556px;
+}
+
+.aboutpage .in {
+  margin: 10px 0px;
+}
+
+.aboutpage .in input {
+  margin-right: 12px;
+}
+
+.aboutpage .sub-button {
+  border-radius: 20px;
+  width: 445px;
+  padding: 10px;
+  margin: 35.7px 49px;
+  background-color: #0c0908;
+  color: white;
+}
+
+.aboutpage .diff1 {
+  margin-top: 21px;
+}
+
+.aboutpage .main_container {
+  margin-top: 100px;
+}
+
+.aboutpage #lavogue {
+  color: rgb(187, 147, 187);
+}
+
+.aboutpage .sub1 i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px;
+}
+
+.aboutpage .sub_2 i {
+  margin-right: 11px;
+  font-size: 21px;
+}
+
+.aboutpage .diff-head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.aboutpage .diff-head input {
+  margin: 10px;
+}

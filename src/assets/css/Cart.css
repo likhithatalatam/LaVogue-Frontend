@@ -1,0 +1,180 @@
+.cartpage .cart-container {
+  position: absolute;
+  top: 12.6%;
+  z-index: -1;
+  width: 100%;
+}
+.cartpage .heading-div {
+  color: black;
+  background-color: #f2f2f2;
+  padding-left: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.cartpage .heading-div h3 {
+  margin: 0px;
+  padding-top: 20px;
+  font-size: 29px;
+  letter-spacing: 2px;
+  font-weight: 650;
+}
+.cartpage .sub {
+  display: flex;
+  flex-direction: row;
+  margin: 14px 0px;
+}
+.cartpage .sub p {
+  margin-right: 7px;
+  font-size: 17px;
+}
+.cartpage .sub i {
+  margin-right: 7px;
+}
+.cartpage .table-head {
+  margin: 44px 139px;
+}
+.cartpage .table-head h4 {
+  margin: 20px 0;
+  text-decoration: overline;
+  letter-spacing: 1px;
+}
+.cartpage table {
+  width: 100%;
+}
+.cartpage table thead tr {
+  height: 92px;
+  background-color: #f2f2f2;
+}
+.cartpage tbody tr {
+  height: 150px;
+  border: 1px solid #f2f2f2;
+}
+.cartpage #product-title {
+  text-transform: uppercase;
+}
+.cartpage table tr th {
+  text-align: center;
+  font-size: 14px;
+}
+.cartpage table tr td {
+  text-align: center;
+}
+.cartpage table {
+  border: 1px solid #f2f2f2;
+}
+.cartpage tbody tr td input {
+  width: 173px;
+  padding: 10px 15px;
+  background-color: #f8f8f8;
+  border: 1px solid #f2f2f2;
+  outline: none;
+}
+.cartpage .table-head h5 {
+  margin-bottom: 53px;
+  padding-top: 52px;
+  text-decoration: overline;
+  letter-spacing: 5px;
+  font-size: 18px;
+}
+.cartpage .bi-trash3:hover {
+  color: red;
+}
+.cartpage .b {
+  background-color: #f2f2f2;
+  width: 100%;
+  height: 349px;
+}
+.cartpage .div {
+  padding: 38px 38px;
+  display: flex;
+  flex-direction: column;
+}
+.cartpage .div label {
+  margin: 10px 0px;
+}
+.cartpage .div input {
+  padding: 9px;
+  border: 1px solid #f2f2f2;
+  margin: 18px 0;
+  outline: none;
+}
+.cartpage .b button {
+  margin: 0px 38px;
+  padding: 10px 162px;
+  border-radius: 109px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+.cartpage .b button:hover {
+  margin: 0px 38px;
+  padding: 10px 162px;
+  border-radius: 109px;
+  background-color: #a07adc;
+  transition-duration: 0.3s;
+  border: none;
+}
+.cartpage .c {
+  background-color: #f2f2f2;
+  width: 100%;
+  padding: 50px;
+}
+.cartpage .price-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.cartpage .checkout-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 32px 0px;
+}
+.cartpage .checkout-buttons button {
+  width: 284px;
+  padding: 10px;
+  border-radius: 42px;
+  background-color: black;
+  color: white;
+  border: none;
+}
+.cartpage .checkout-buttons button a {
+  text-decoration: none;
+  color: white;
+}
+.cartpage .checkout-buttons button:hover {
+  width: 284px;
+  padding: 10px;
+  border-radius: 42px;
+  background-color: #a07adc;
+  transition-duration: 0.3s;
+  color: white;
+  border: none;
+}
+.cartpage .cart-summary {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.cartpage .apply-coupon {
+  width: 33%;
+  margin: 0 20px;
+}
+.cartpage .price-calculation {
+  margin: 0 20px;
+  width: 46%;
+}
+.cartpage .apply-coupon h5 {
+  margin: 40px 0;
+  text-decoration: overline;
+  letter-spacing: 3px;
+  font-size: 17px;
+}
+.cartpage .price-calculation h5 {
+  margin: 40px 0;
+  text-decoration: overline;
+  letter-spacing: 3px;
+  font-size: 17px;
+}

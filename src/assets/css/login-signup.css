@@ -1,0 +1,592 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, sans-serif;
+}
+
+/* =====================================================
+   AUTH PAGE
+===================================================== */
+
+.auth-page {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.auth-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: white;
+}
+
+/* =====================================================
+   FORM COMMON
+===================================================== */
+
+.auth-form {
+  position: absolute;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  padding: 40px 8%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition:
+    transform 0.8s ease,
+    opacity 0.5s ease;
+  z-index: 2;
+}
+
+/* =====================================================
+   LOGIN FORM
+   LOGIN FORM IS ON RIGHT
+===================================================== */
+
+.login-form {
+  left: 50%;
+  transform: translateX(0);
+  opacity: 1;
+}
+.login-form form {
+  width: 100%;
+  margin-left: 42px;
+}
+.signup-form form {
+  width: 100%;
+  margin-left: 40px;
+}
+
+/* =====================================================
+   SIGNUP FORM
+   SIGNUP FORM STARTS OUTSIDE LEFT
+===================================================== */
+
+.signup-form {
+  left: 0;
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+/* =====================================================
+   SIGNUP MODE
+===================================================== */
+
+/* Login moves out to the right */
+.auth-container.signup-mode .login-form {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+/* Signup comes in from the left */
+.auth-container.signup-mode .signup-form {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.auth-logo {
+  width: 220px;
+  margin-bottom: 20px;
+  object-fit: contain;
+}
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.auth-form h2 {
+  font-size: 26px;
+  font-weight: 400;
+  margin: 5px 0 28px;
+  color: #111;
+  text-align: center;
+}
+
+/* =====================================================
+   INPUTS
+===================================================== */
+
+.auth-inputs {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-inputs input {
+  width: 100%;
+  height: 52px;
+  padding: 0 18px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e5e5;
+  outline: none;
+  font-size: 15px;
+  background: white;
+  transition: border 0.2s ease;
+}
+
+.auth-inputs input:focus {
+  border-color: #a07adc;
+}
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+.forgot-password {
+  width: 100%;
+  max-width: 420px;
+  text-align: right;
+  margin: 2px 0 22px;
+  font-size: 14px;
+}
+
+.forgot-password a {
+  color: #555;
+  text-decoration: none;
+}
+
+.forgot-password a:hover {
+  color: #a07adc;
+}
+
+/* =====================================================
+   MAIN BUTTON
+===================================================== */
+
+.auth-submit {
+  width: 100%;
+  max-width: 420px;
+  height: 52px;
+  border: none;
+  background: #a07adc;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.auth-submit:hover {
+  background: #8d65cc;
+}
+
+.auth-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.auth-divider {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0 15px;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #ddd;
+}
+
+.auth-divider span {
+  color: #777;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   SOCIAL BUTTONS
+===================================================== */
+
+.social-btns {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  gap: 10px;
+}
+
+.social-btns button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  background: #f3f3f3;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.social-btns button:hover {
+  background: #e8e8e8;
+}
+
+.social-btns i {
+  margin-right: 7px;
+}
+
+/* =====================================================
+   PURPLE MOVING PANEL
+===================================================== */
+
+.welcome-panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: #a07adc;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top-right-radius: 180px;
+  border-bottom-right-radius: 180px;
+  transition:
+    transform 0.9s cubic-bezier(0.77, 0, 0.175, 1),
+    border-radius 0.9s ease;
+}
+
+/* =====================================================
+   PURPLE PANEL MOVES RIGHT
+===================================================== */
+
+.auth-container.signup-mode .welcome-panel {
+  transform: translateX(100%);
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 180px;
+  border-bottom-left-radius: 180px;
+}
+
+/* =====================================================
+   WELCOME CONTENT
+===================================================== */
+
+.welcome-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 30px;
+}
+
+.welcome-content img {
+  width: 390px;
+  height: 390px;
+  object-fit: contain;
+  margin-bottom: 5px;
+}
+
+.welcome-content h1 {
+  font-size: 46px;
+  margin: 5px 0 10px;
+  font-weight: 600;
+}
+
+.welcome-content h4 {
+  font-size: 17px;
+  margin: 0 0 22px;
+  font-weight: 400;
+}
+
+.welcome-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 190px;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  background: transparent;
+  font-size: 16px;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}
+
+.welcome-button:hover {
+  background: white;
+  color: #a07adc;
+}
+
+/* =====================================================
+   LARGE SCREENS
+===================================================== */
+
+@media (min-width: 1400px) {
+  .auth-form {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+
+  .welcome-content img {
+    width: 420px;
+    height: 420px;
+  }
+
+  .welcome-content h1 {
+    font-size: 50px;
+  }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 900px) {
+  .auth-form {
+    padding: 35px;
+  }
+
+  .welcome-content img {
+    width: 280px;
+    height: 300px;
+  }
+
+  .welcome-content h1 {
+    font-size: 34px;
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+  .auth-container {
+    height: 100vh;
+  }
+
+  .auth-form {
+    width: 100%;
+    left: 0;
+
+    padding: 30px;
+  }
+
+  .welcome-panel {
+    display: none;
+  }
+
+  .signup-form {
+    transform: translateX(100%);
+  }
+
+  .auth-container.signup-mode .signup-form {
+    transform: translateX(0);
+  }
+
+  .auth-container.signup-mode .login-form {
+    transform: translateX(-100%);
+  }
+
+  .auth-logo {
+    width: 190px;
+  }
+}
+/* =====================================================
+   LANDING PAGE
+===================================================== */
+
+.landing {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* MAIN CONTAINER */
+.landingcontainer {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+/* =====================================================
+   IMAGE
+===================================================== */
+
+.landingsubcontainer {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.landingsubcontainer img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* =====================================================
+   TEXT ON IMAGE - LEFT SIDE
+===================================================== */
+
+.landing-text {
+  position: absolute;
+  top: 50%;
+  left: 8%;
+  transform: translateY(-50%);
+  width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+/* HEADING */
+
+.landing-text h1 {
+  margin: 0 0 15px;
+  font-size: 56px;
+  font-weight: 500;
+  color: #222;
+}
+
+/* SUBTEXT */
+
+.landing-text .subtext {
+  margin: 0 0 10px;
+  font-size: 20px;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* TAGLINE */
+
+.landing-text .tagline {
+  margin: 0 0 30px;
+  font-size: 16px;
+  color: #555;
+}
+
+/* =====================================================
+   SHOP NOW BUTTON
+===================================================== */
+
+.landing-text button {
+  padding: 13px 35px;
+  border: 1px solid white;
+  border-radius: 5px;
+  background-color: #a07adc;
+  background: none;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.landing-text button:hover {
+  background-color: #8b63d2;
+  transform: translateY(-2px);
+}
+
+.landing-text button a {
+  color: #fff;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 900px) {
+  .landing {
+    height: 100vh;
+  }
+
+  .landingcontainer {
+    height: 100vh;
+  }
+
+  .landingsubcontainer {
+    height: 100vh;
+  }
+
+  .landing-text {
+    left: 6%;
+    width: 360px;
+  }
+
+  .landing-text h1 {
+    font-size: 44px;
+  }
+
+  .landing-text .subtext {
+    font-size: 18px;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 500px) {
+  .landing-text {
+    left: 5%;
+    width: 90%;
+  }
+
+  .landing-text h1 {
+    font-size: 38px;
+  }
+
+  .landing-text .subtext {
+    font-size: 16px;
+  }
+
+  .landing-text .tagline {
+    font-size: 14px;
+  }
+}

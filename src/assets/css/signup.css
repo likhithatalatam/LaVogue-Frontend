@@ -1,0 +1,116 @@
+body {
+  margin: 0;
+}
+.overall-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 47px 0px;
+}
+.img-container {
+  width: 500px;
+}
+.img-container .img {
+  height: 600px;
+  width: 500px;
+  background-color: #a07adc;
+  border-top-right-radius: 32%;
+  border-bottom-right-radius: 32%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: system-ui;
+}
+.img-container .img button {
+  padding: 10px 60px;
+  background-color: transparent;
+  color: wheat;
+  border: 1px solid white;
+  border-radius: 13px;
+  margin: 16px;
+}
+.img-container .img h1 {
+  margin: 17px;
+  font-size: 45px;
+}
+.img-container .img h4 {
+  font-size: 17px;
+}
+.sub-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 32px;
+}
+.login-container {
+  /* border: 1px solid grey; */
+  padding: 20px 50px;
+  width: 500px;
+  height: 600px;
+}
+.login-container img {
+  width: 241px;
+  margin: 10px 69px;
+}
+.login-container h4 {
+  text-align: center;
+  margin: 21px;
+  font-weight: 400;
+}
+.input-fields {
+  display: flex;
+  flex-direction: column;
+}
+.input-fields input {
+  padding: 10px 30px;
+  margin: 15px 0px;
+  outline: none;
+  border: 2px solid #f2f2f2;
+}
+.forgot-password {
+  text-align: right;
+  font-size: 14px;
+}
+.forgot-password a {
+  text-decoration: none;
+  color: grey;
+}
+.login-btn button {
+  padding: 9px 180px;
+  background-color: #a07adc;
+  border: none;
+  color: white;
+}
+.login-container h5 {
+  text-align: center;
+  margin: 18px;
+}
+.social-btns button {
+  padding: 10px 38px;
+  width: 48.4%;
+  margin: 8px 2px;
+  border: none;
+}
+.signup {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.hr-line h6 {
+  text-align: center;
+  color: grey;
+}
+.social-btns i {
+  margin: 5px;
+}
+.overall-container2 {
+  display: none;
+}
+.img button a {
+  text-decoration: none;
+  color: white;
+}
