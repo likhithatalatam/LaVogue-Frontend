@@ -23,7 +23,9 @@ export const getImageUrl = (image) => {
   }
 
   // If image is only a filename or relative path
-  return `${BACKEND_URL}${image.startsWith("/") ? "" : "/"}${image}`;
+  const cleanImage = image.replace(/^\/?uploads\//, "");
+
+  return `${BACKEND_URL}/uploads/${cleanImage}`;
 };
 
 export default API;
