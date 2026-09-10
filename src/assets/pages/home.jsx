@@ -130,18 +130,6 @@ function Home() {
   // IMAGE URL
   // ============================================
 
-  const getImageUrl = (image) => {
-    if (!image) {
-      return "";
-    }
-
-    if (image.startsWith("http")) {
-      return image;
-    }
-
-    return `${BACKEND_URL}${image.startsWith("/") ? "" : "/"}${image}`;
-  };
-
   // ============================================
   // PRODUCT CARD
   // ============================================
