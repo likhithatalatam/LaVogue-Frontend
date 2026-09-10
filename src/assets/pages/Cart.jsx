@@ -3,6 +3,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
+import API, { getImageUrl } from "../../api";
+
 function Cart() {
   const [cart, setCart] = useState([]);
   const [coupon, setCoupon] = useState("");
@@ -156,7 +158,7 @@ function Cart() {
 
                         <td>
                           <img
-                            src={`http://localhost:5000/uploads/${product.images?.[0]}`}
+                            src={getImageUrl(product.images?.[0])}
                             width="60"
                             height="60"
                             alt={product.productTitle}

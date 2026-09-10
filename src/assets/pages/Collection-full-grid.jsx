@@ -5,7 +5,7 @@ import Footer from "./Footer";
 
 import { Link, useSearchParams } from "react-router-dom";
 
-import API from "../../api";
+import API, { getImageUrl } from "../../api";
 
 function ProductGrid() {
   const [products, getproducts] = useState([]);
@@ -216,7 +216,7 @@ function ProductGrid() {
                         >
                           <div className="card1">
                             <img
-                              src={`http://localhost:5000/uploads/${pro.images?.[0]}`}
+                              src={getImageUrl(pro.images?.[0])}
                               alt={pro.productTitle}
                             />
 

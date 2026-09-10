@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
+import API, { getImageUrl } from "../../api";
 function Wishlist() {
   const [wishlist, setWishlist] = useState([]);
 
@@ -103,7 +104,7 @@ function Wishlist() {
                               }}
                             >
                               <img
-                                src={`http://localhost:5000/uploads/${product.images?.[0]}`}
+                                src={getImageUrl(product.images?.[0])}
                                 alt={product.productTitle}
                               />
 

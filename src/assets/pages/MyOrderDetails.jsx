@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/MyProfile.css";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import API from "../../api";
+import API, { getImageUrl } from "../../api";
 
 function MyOrderDetails() {
   const { id } = useParams();
@@ -449,7 +449,7 @@ function MyOrderDetails() {
                                 <div className="product-image-box">
                                   {image ? (
                                     <img
-                                      src={`http://localhost:5000/uploads/${image}`}
+                                      src={getImageUrl(image)}
                                       alt={productName}
                                     />
                                   ) : (

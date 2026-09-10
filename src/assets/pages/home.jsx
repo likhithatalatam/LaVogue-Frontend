@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import API from "../../api.js";
+import API, { getImageUrl } from "../../api";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -139,7 +139,7 @@ function Home() {
       return image;
     }
 
-    return `http://localhost:5000/uploads/${image}`;
+    return `${BACKEND_URL}${image.startsWith("/") ? "" : "/"}${image}`;
   };
 
   // ============================================

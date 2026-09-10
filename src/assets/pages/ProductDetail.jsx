@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 
-import API from "../../api";
+import API, { getImageUrl } from "../../api";
 
 import { useParams } from "react-router-dom";
 
@@ -360,7 +360,7 @@ function ProductDetail() {
               <div className="product-img">
                 {mainImage && (
                   <img
-                    src={`http://localhost:5000/uploads/${mainImage}`}
+                    src={getImageUrl(mainImage)}
                     alt={product.productTitle}
                   />
                 )}
@@ -370,7 +370,7 @@ function ProductDetail() {
                 {product.images?.map((img, index) => (
                   <img
                     key={index}
-                    src={`http://localhost:5000/uploads/${img}`}
+                    src={getImageUrl(img)}
                     alt={product.productTitle}
                     onClick={() => setMainImage(img)}
                     style={{
