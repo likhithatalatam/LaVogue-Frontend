@@ -112,7 +112,12 @@ function Auth() {
         ================================================= */}
 
         <div className="auth-form login-form">
-          <img src="/images/Logo_png.png" alt="LaVogue" className="auth-logo" />
+          <img
+            src="/images/Logo_png.png"
+            alt="LaVogue"
+            className="auth-logo"
+            fetchPriority="high"
+          />
 
           <h2>Welcome to LaVogue</h2>
 
@@ -164,7 +169,12 @@ function Auth() {
         ================================================= */}
 
         <div className="auth-form signup-form">
-          <img src="/images/Logo_png.png" alt="LaVogue" className="auth-logo" />
+          <img
+            src="/images/Logo_png.png"
+            alt="LaVogue"
+            className="auth-logo"
+            fetchPriority="high"
+          />
 
           <h2>Welcome to LaVogue</h2>
 

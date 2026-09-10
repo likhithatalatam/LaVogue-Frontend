@@ -11,7 +11,11 @@ function Landing() {
         ================================================= */}
 
         <div className="landingsubcontainer">
-          <img src="/images/lan.png" alt="LaVogue Fashion" />
+          <img
+            src="/images/lan.png"
+            alt="LaVogue Fashion"
+            fetchPriority="high"
+          />
         </div>
 
         {/* =================================================
