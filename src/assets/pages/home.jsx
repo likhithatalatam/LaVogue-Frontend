@@ -147,6 +147,7 @@ function Home() {
           <img
             src={getImageUrl(product.images?.[0])}
             alt={product.productTitle}
+            loading="lazy"
           />
 
           <h5>{product.productTitle}</h5>
@@ -394,6 +395,7 @@ function Home() {
                     <img
                       src={getImageUrl(cat.categoryImage)}
                       alt={cat.categoryName}
+                      loading="lazy"
                     />
 
                     <h4>{cat.categoryName}</h4>
@@ -447,6 +449,7 @@ function Home() {
                 <img
                   src={getImageUrl(brand.brandImage)}
                   alt={brand.brandName}
+                  loading="lazy"
                 />
               </Link>
             ))}
@@ -518,6 +521,7 @@ function Home() {
                           className={index === 0 ? "ban-img1" : "ban-img2"}
                           src={getImageUrl(image.image)}
                           alt={image.title || "Collection"}
+                          loading="lazy"
                         />
                       </Link>
                     ) : (
@@ -526,6 +530,7 @@ function Home() {
                         className={index === 0 ? "ban-img1" : "ban-img2"}
                         src={getImageUrl(image.image)}
                         alt={image.title || "Collection"}
+                        loading="lazy"
                       />
                     ),
                   )}
@@ -539,6 +544,7 @@ function Home() {
                           className={index === 0 ? "ban-img2" : "ban-img1"}
                           src={getImageUrl(image.image)}
                           alt={image.title || "Collection"}
+                          loading="lazy"
                         />
                       </Link>
                     ) : (
@@ -547,6 +553,7 @@ function Home() {
                         className={index === 0 ? "ban-img2" : "ban-img1"}
                         src={getImageUrl(image.image)}
                         alt={image.title || "Collection"}
+                        loading="lazy"
                       />
                     ),
                   )}
@@ -594,7 +601,7 @@ function Home() {
 
             <div className="blog-section-cards">
               <div className="blog-img">
-                <img src="/images/blog1.jpeg" alt="" />
+                <img src="/images/blog1.jpeg" alt="" loading="lazy" />
 
                 <p>
                   We know how important it is to find the perfect fit when
@@ -617,11 +624,11 @@ function Home() {
                     others just like you have shared their experiences.
                   </p>
 
-                  <img src="/images/blog2.jpeg" alt="" />
+                  <img src="/images/blog2.jpeg" alt="" loading="lazy" />
                 </div>
 
                 <div className="blog-img-1">
-                  <img src="/images/blog3.jpeg" alt="" />
+                  <img src="/images/blog3.jpeg" alt="" loading="lazy" />
 
                   <p>
                     At LaVogue, we believe in rewarding our loyal customers.
