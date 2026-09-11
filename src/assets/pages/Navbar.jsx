@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "../css/Navbar.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navbar() {
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
   const [cartCount, setCartCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -26,6 +28,17 @@ function Navbar() {
       window.removeEventListener("cartUpdated", updateCartCount);
     };
   }, []);
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const value = search.trim();
+
+    if (!value) return;
+
+    navigate(`/collection?search=${encodeURIComponent(value)}`);
+    setSearch("");
+  };
 
   return (
     <>
@@ -57,11 +70,16 @@ function Navbar() {
             </ul>
           </div>
 
-          <div className="search-field">
+          <form className="search-field" onSubmit={handleSearch}>
             <img className="searchicon" src="/images/search icon.png" alt="" />
 
-            <input type="search" placeholder="Search..." />
-          </div>
+            <input
+              type="search"
+              placeholder="Search..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+            />
+          </form>
 
           <div className="nav-list">
             <ul>

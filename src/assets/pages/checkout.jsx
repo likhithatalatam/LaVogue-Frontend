@@ -23,7 +23,7 @@ function Checkout() {
 
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
-
+    setCart(storedCart);
     if (storedCart.length === 0) {
       navigate("/cart");
     }

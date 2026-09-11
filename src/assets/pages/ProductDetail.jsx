@@ -273,11 +273,9 @@ function ProductDetail() {
                   <img
                     key={index}
                     src={getImageUrl(img)}
-                    alt={product.productTitle}
+                    alt={`${product.productTitle} ${index + 1}`}
                     onClick={() => setMainImage(img)}
-                    style={{
-                      cursor: "pointer",
-                    }}
+                    className={mainImage === img ? "active-thumbnail" : ""}
                   />
                 ))}
               </div>

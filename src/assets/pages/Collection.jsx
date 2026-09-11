@@ -19,6 +19,8 @@ function Collection() {
 
   const brandId = searchParams.get("brand");
 
+  const searchQuery = searchParams.get("search");
+
   const [selectedCategory, setSelectedCategory] = useState(categoryId || "");
 
   const [selectedBrands, setSelectedBrands] = useState([]);
@@ -50,6 +52,10 @@ function Collection() {
   useEffect(() => {
     setSelectedCategory(categoryId || "");
   }, [categoryId]);
+
+  useEffect(() => {
+    setSearch(searchQuery || "");
+  }, [searchQuery]);
 
   const getPrice = (product) => {
     return Number(product.mrp) || 0;

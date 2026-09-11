@@ -256,9 +256,9 @@ function Home() {
 
         <section>
           <div className="main-categories">
-            <a href="#">
+            <Link to="/collection">
               <img src="/images/cat1.png" alt="" />
-            </a>
+            </Link>
 
             <a href="#">
               <img src="/images/cat2.png" alt="" />
