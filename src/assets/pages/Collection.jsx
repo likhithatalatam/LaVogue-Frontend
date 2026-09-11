@@ -9,12 +9,12 @@ import API, { getImageUrl } from "../../api";
 
 function Collection() {
   const [products, setproducts] = useState([]);
+  const [showMobileFilters, setShowMobileFilters] = useState(false);
 
   const [search, setSearch] = useState("");
 
   const [searchParams] = useSearchParams();
 
-  // URL filters
   const categoryId = searchParams.get("category");
 
   const brandId = searchParams.get("brand");
@@ -33,8 +33,6 @@ function Collection() {
 
   const [productLimit, setProductLimit] = useState("20");
 
-  // ================= GET PRODUCTS =================
-
   useEffect(() => {
     const fetchproducts = async () => {
       try {
@@ -49,13 +47,9 @@ function Collection() {
     fetchproducts();
   }, []);
 
-  // ================= UPDATE URL CATEGORY =================
-
   useEffect(() => {
     setSelectedCategory(categoryId || "");
   }, [categoryId]);
-
-  // ================= PRICE =================
 
   const getPrice = (product) => {
     return Number(product.mrp) || 0;
@@ -91,8 +85,6 @@ function Collection() {
     }
   }, [maxProductPrice]);
 
-  // ================= CATEGORIES =================
-
   const categories = useMemo(() => {
     const categoryMap = {};
 
@@ -116,8 +108,6 @@ function Collection() {
 
     return Object.values(categoryMap);
   }, [products]);
-
-  // ================= BRANDS =================
 
   const brands = useMemo(() => {
     const brandMap = {};
@@ -143,8 +133,6 @@ function Collection() {
     return Object.values(brandMap);
   }, [products]);
 
-  // ================= COLORS =================
-
   const colors = useMemo(() => {
     const colorMap = {};
 
@@ -168,8 +156,6 @@ function Collection() {
     }));
   }, [products]);
 
-  // ================= DISCOUNTS =================
-
   const discounts = useMemo(() => {
     const discountMap = {};
 
@@ -186,22 +172,17 @@ function Collection() {
       .sort((a, b) => a - b);
   }, [products]);
 
-  // ================= FILTER PRODUCTS =================
-
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // URL CATEGORY
     if (categoryId) {
       result = result.filter((product) => product.category?._id === categoryId);
     }
 
-    // URL BRAND
     if (brandId) {
       result = result.filter((product) => product.brand?._id === brandId);
     }
 
-    // SEARCH
     if (search.trim()) {
       const searchText = search.toLowerCase().trim();
 
@@ -223,21 +204,18 @@ function Collection() {
       });
     }
 
-    // SIDEBAR CATEGORY
     if (selectedCategory && selectedCategory !== categoryId) {
       result = result.filter(
         (product) => product.category?._id === selectedCategory,
       );
     }
 
-    // SIDEBAR BRAND
     if (selectedBrands.length > 0) {
       result = result.filter((product) =>
         selectedBrands.includes(product.brand?.brandName),
       );
     }
 
-    // DISCOUNT
     if (selectedDiscount) {
       const requiredDiscount = Number(selectedDiscount);
 
@@ -248,7 +226,6 @@ function Collection() {
       });
     }
 
-    // COLOR
     if (selectedColor) {
       result = result.filter(
         (product) =>
@@ -257,12 +234,10 @@ function Collection() {
       );
     }
 
-    // PRICE
     if (selectedPrice > 0 && selectedPrice < maxProductPrice) {
       result = result.filter((product) => getPrice(product) <= selectedPrice);
     }
 
-    // SORTING
     if (sorting === "Sort by popularity") {
       result.sort((a, b) => {
         const popularityA = Number(a.popularity) || 0;
@@ -293,7 +268,6 @@ function Collection() {
       });
     }
 
-    // LIMIT
     if (productLimit !== "All") {
       result = result.slice(0, Number(productLimit));
     }
@@ -314,8 +288,6 @@ function Collection() {
     productLimit,
   ]);
 
-  // ================= BRAND CHECKBOX =================
-
   const handleBrandChange = (brandName) => {
     setSelectedBrands((previousBrands) => {
       if (previousBrands.includes(brandName)) {
@@ -325,8 +297,6 @@ function Collection() {
       return [...previousBrands, brandName];
     });
   };
-
-  // ================= CLEAR FILTER =================
 
   const clearFilters = () => {
     setSearch("");
@@ -345,8 +315,6 @@ function Collection() {
 
     setProductLimit("20");
   };
-
-  // ================= QUERY FOR GRID LINK =================
 
   const gridQuery = new URLSearchParams();
 
@@ -381,6 +349,19 @@ function Collection() {
           </div>
 
           <div className="sub-container2">
+            <div className="mobile-filter-bar">
+              <button
+                className="mobile-filter-button"
+                onClick={() => setShowMobileFilters(!showMobileFilters)}
+              >
+                <i className="bi bi-sliders"></i>
+                <span>FILTER</span>
+              </button>
+
+              <div className="mobile-filter-count">
+                {filteredProducts.length} products
+              </div>
+            </div>
             <div className="sort-div">
               <div className="grid-icons">
                 <button>
@@ -440,7 +421,11 @@ function Collection() {
           </div>
 
           <div className="section">
-            <div className="div-list">
+            <div
+              className={`div-list ${
+                showMobileFilters ? "mobile-filters-open" : ""
+              }`}
+            >
               {/* SEARCH */}
 
               <div className="div1">
@@ -579,43 +564,37 @@ function Collection() {
 
             <div>
               {filteredProducts.length > 0 ? (
-                Array.from({
-                  length: Math.ceil(filteredProducts.length / 3),
-                }).map((_, rowIndex) => (
-                  <div className="latest-collection-cards" key={rowIndex}>
-                    {filteredProducts
-                      .slice(rowIndex * 3, rowIndex * 3 + 3)
-                      .map((pro) => (
-                        <Link
-                          to={`/product/${pro._id}`}
-                          key={pro._id}
-                          style={{
-                            textDecoration: "none",
-                            color: "inherit",
-                          }}
-                        >
-                          <div className="card1">
-                            <img
-                              src={getImageUrl(pro.images?.[0])}
-                              alt={pro.productTitle}
-                            />
+                <div className="latest-collection-cards">
+                  {filteredProducts.map((pro) => (
+                    <Link
+                      to={`/product/${pro._id}`}
+                      key={pro._id}
+                      style={{
+                        textDecoration: "none",
+                        color: "inherit",
+                      }}
+                    >
+                      <div className="card1">
+                        <img
+                          src={getImageUrl(pro.images?.[0])}
+                          alt={pro.productTitle}
+                        />
 
-                            <h5>{pro.productTitle}</h5>
+                        <h5>{pro.productTitle}</h5>
 
-                            <div className="rating-icons">
-                              <i className="bi bi-star-fill"></i>
-                              <i className="bi bi-star-fill"></i>
-                              <i className="bi bi-star-fill"></i>
-                              <i className="bi bi-star-fill"></i>
-                              <i className="bi bi-star-half"></i>
-                            </div>
+                        <div className="rating-icons">
+                          <i className="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
+                          <i className="bi bi-star-fill"></i>
+                          <i className="bi bi-star-half"></i>
+                        </div>
 
-                            <h6>${pro.offerPrice || pro.mrp}</h6>
-                          </div>
-                        </Link>
-                      ))}
-                  </div>
-                ))
+                        <h6>${pro.offerPrice || pro.mrp}</h6>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
               ) : (
                 <div className="noproducts">
                   <h5>No products found...</h5>

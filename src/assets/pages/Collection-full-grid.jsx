@@ -20,8 +20,6 @@ function ProductGrid() {
 
   const brandId = searchParams.get("brand");
 
-  // ================= FETCH PRODUCTS =================
-
   useEffect(() => {
     const fetchproducts = async () => {
       try {
@@ -36,17 +34,13 @@ function ProductGrid() {
     fetchproducts();
   }, []);
 
-  // ================= FILTER =================
-
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
-    // CATEGORY FROM HOME
     if (categoryId) {
       result = result.filter((product) => product.category?._id === categoryId);
     }
 
-    // BRAND FROM HOME
     if (brandId) {
       result = result.filter((product) => product.brand?._id === brandId);
     }
@@ -54,17 +48,13 @@ function ProductGrid() {
     return result;
   }, [products, categoryId, brandId]);
 
-  // ================= SORT + LIMIT =================
-
   const displayedProducts = useMemo(() => {
     let result = [...filteredProducts];
 
-    // Default sorting
     if (sorting === "Default sorting") {
       result = [...filteredProducts];
     }
 
-    // Newest
     if (sorting === "sort by newness") {
       result.sort((a, b) => {
         const dateA = new Date(a.createdAt || 0).getTime();
@@ -75,7 +65,6 @@ function ProductGrid() {
       });
     }
 
-    // Popularity
     if (sorting === "Sort by popularity") {
       result.sort((a, b) => {
         const popularityA = Number(a.popularity || 0);
@@ -86,7 +75,6 @@ function ProductGrid() {
       });
     }
 
-    // Rating
     if (sorting === "Sort by average rating") {
       result.sort((a, b) => {
         const ratingA = Number(a.rating || 0);
@@ -97,15 +85,12 @@ function ProductGrid() {
       });
     }
 
-    // LIMIT
     if (productLimit !== "All") {
       result = result.slice(0, Number(productLimit));
     }
 
     return result;
   }, [filteredProducts, sorting, productLimit]);
-
-  // ================= QUERY FOR COLLECTION =================
 
   const collectionQuery = new URLSearchParams();
 

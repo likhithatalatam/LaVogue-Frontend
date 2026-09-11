@@ -18,19 +18,11 @@ function MyProfile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  // =====================================================
-  // ACTIVE MENU
-  // =====================================================
-
   const isProfileActive = location.pathname === "/myprofile";
 
   const isOrdersActive =
     location.pathname === "/myorders" ||
     location.pathname.startsWith("/myorderdetails");
-
-  // =====================================================
-  // FETCH PROFILE
-  // =====================================================
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -80,10 +72,6 @@ function MyProfile() {
     fetchProfile();
   }, [navigate]);
 
-  // =====================================================
-  // INPUT CHANGE
-  // =====================================================
-
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -92,10 +80,6 @@ function MyProfile() {
       [name]: value,
     }));
   };
-
-  // =====================================================
-  // SAVE PROFILE
-  // =====================================================
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -139,10 +123,6 @@ function MyProfile() {
     }
   };
 
-  // =====================================================
-  // LOGOUT
-  // =====================================================
-
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -154,10 +134,6 @@ function MyProfile() {
     navigate("/login");
   };
 
-  // =====================================================
-  // LOADING
-  // =====================================================
-
   if (loading) {
     return (
       <div className="orders-loading">
@@ -167,23 +143,18 @@ function MyProfile() {
     );
   }
 
-  // =====================================================
-  // UI
-  // =====================================================
-
   return (
     <>
       <header>
         <div className="logo-nav">
           <img src="/images/Logo_png.png" alt="LaVogue" />
+          <div className="back-btn" onClick={() => navigate("/home")}>
+            <i className="bi bi-house-door"></i>Home
+          </div>
         </div>
 
         <div className="myprofile">
           <div className="main-container">
-            {/* =================================================
-                SIDE MENU
-            ================================================= */}
-
             <div className="side-header">
               <div className="profile-img">
                 <img src="/images/card4.jpg" alt="Profile" />
@@ -193,8 +164,6 @@ function MyProfile() {
 
               <div className="List">
                 <ul>
-                  {/* PROFILE */}
-
                   <div
                     className={`div1 ${isProfileActive ? "active-menu" : ""}`}
                   >
@@ -210,8 +179,6 @@ function MyProfile() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* ORDERS */}
 
                   <div
                     className={`div1 ${isOrdersActive ? "active-menu" : ""}`}
@@ -229,8 +196,6 @@ function MyProfile() {
                     </a>
                   </div>
 
-                  {/* SETTINGS */}
-
                   <div className="div1">
                     <a href="#" onClick={(e) => e.preventDefault()}>
                       <li>Settings</li>
@@ -238,8 +203,6 @@ function MyProfile() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* LOGOUT */}
 
                   <div className="div1">
                     <a
@@ -258,10 +221,6 @@ function MyProfile() {
               </div>
             </div>
 
-            {/* =================================================
-                PROFILE CONTENT
-            ================================================= */}
-
             <div className="sub-container">
               <div className="top-row">
                 <div className="heading">
@@ -273,8 +232,6 @@ function MyProfile() {
               </div>
 
               <form onSubmit={handleSubmit}>
-                {/* NAME */}
-
                 <div>
                   <label>Name</label>
 
@@ -286,15 +243,11 @@ function MyProfile() {
                   />
                 </div>
 
-                {/* USERNAME */}
-
                 <div>
                   <label>Username</label>
 
                   <input type="text" value={profile.userName} readOnly />
                 </div>
-
-                {/* EMAIL */}
 
                 <div>
                   <label>Email</label>
@@ -307,8 +260,6 @@ function MyProfile() {
                   />
                 </div>
 
-                {/* PHONE */}
-
                 <div>
                   <label>Phone number</label>
 
@@ -319,8 +270,6 @@ function MyProfile() {
                     onChange={handleChange}
                   />
                 </div>
-
-                {/* LOCATION */}
 
                 <div>
                   <label>Location</label>
@@ -333,8 +282,6 @@ function MyProfile() {
                   />
                 </div>
 
-                {/* BIO */}
-
                 <div>
                   <label>Bio</label>
 
@@ -345,8 +292,6 @@ function MyProfile() {
                     onChange={handleChange}
                   ></textarea>
                 </div>
-
-                {/* SAVE */}
 
                 <div className="btn-div">
                   <button type="submit" disabled={saving}>

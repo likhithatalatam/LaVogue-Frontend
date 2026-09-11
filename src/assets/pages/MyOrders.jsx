@@ -10,19 +10,11 @@ function MyOrders() {
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // =====================================================
-  // ACTIVE MENU
-  // =====================================================
-
   const isProfileActive = location.pathname === "/myprofile";
 
   const isOrdersActive =
     location.pathname === "/myorders" ||
     location.pathname.startsWith("/myorderdetails");
-
-  // =====================================================
-  // FETCH MY ORDERS
-  // =====================================================
 
   useEffect(() => {
     const fetchMyOrders = async () => {
@@ -64,10 +56,6 @@ function MyOrders() {
     fetchMyOrders();
   }, [navigate]);
 
-  // =====================================================
-  // STATUS CLASS
-  // =====================================================
-
   const getStatusClass = (status) => {
     const normalizedStatus = String(status || "")
       .trim()
@@ -98,10 +86,6 @@ function MyOrders() {
     }
   };
 
-  // =====================================================
-  // ORDER ITEM COUNT
-  // =====================================================
-
   const getItemCount = (order) => {
     if (Array.isArray(order.products)) {
       return order.products.reduce(
@@ -120,19 +104,11 @@ function MyOrders() {
     return 0;
   };
 
-  // =====================================================
-  // VIEW ORDER
-  // =====================================================
-
   const handleViewOrder = (orderId) => {
     if (!orderId) return;
 
     navigate(`/myorderdetails/${orderId}`);
   };
-
-  // =====================================================
-  // LOADING
-  // =====================================================
 
   if (loading) {
     return (
@@ -144,10 +120,6 @@ function MyOrders() {
     );
   }
 
-  // =====================================================
-  // UI
-  // =====================================================
-
   return (
     <>
       <header>
@@ -157,10 +129,6 @@ function MyOrders() {
 
         <div className="myprofile">
           <div className="main-container">
-            {/* =================================================
-                SIDE MENU
-            ================================================= */}
-
             <div className="side-header">
               <div className="profile-img">
                 <img src="/images/card4.jpg" alt="Profile" />
@@ -170,8 +138,6 @@ function MyOrders() {
 
               <div className="List">
                 <ul>
-                  {/* PROFILE */}
-
                   <div
                     className={`div1 ${isProfileActive ? "active-menu" : ""}`}
                   >
@@ -187,8 +153,6 @@ function MyOrders() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* ORDERS */}
 
                   <div
                     className={`div1 ${isOrdersActive ? "active-menu" : ""}`}
@@ -206,8 +170,6 @@ function MyOrders() {
                     </a>
                   </div>
 
-                  {/* SETTINGS */}
-
                   <div className="div1">
                     <a href="#" onClick={(e) => e.preventDefault()}>
                       <li>Settings</li>
@@ -215,8 +177,6 @@ function MyOrders() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* LOGOUT */}
 
                   <div className="div1">
                     <a
@@ -242,13 +202,7 @@ function MyOrders() {
               </div>
             </div>
 
-            {/* =================================================
-                ORDERS CONTENT
-            ================================================= */}
-
             <div className="sub-container">
-              {/* TOP ROW */}
-
               <div className="top-row">
                 <div className="heading">
                   <h4>My Orders</h4>
@@ -259,10 +213,6 @@ function MyOrders() {
                   Back
                 </div>
               </div>
-
-              {/* =================================================
-                  NO ORDERS
-              ================================================= */}
 
               {orders.length === 0 ? (
                 <div className="no-orders-container">
@@ -277,10 +227,6 @@ function MyOrders() {
                   </button>
                 </div>
               ) : (
-                /* =================================================
-                   ORDERS TABLE
-                ================================================= */
-
                 <div className="orders-table-wrapper">
                   <table className="orders-table">
                     <thead>
@@ -311,17 +257,11 @@ function MyOrders() {
 
                         return (
                           <tr key={orderId}>
-                            {/* S.NO */}
-
                             <td className="serial-number">{index + 1}</td>
-
-                            {/* ORDER ID */}
 
                             <td className="order-id">
                               #{orderId.slice(-6).toUpperCase()}
                             </td>
-
-                            {/* DATE */}
 
                             <td>
                               {order.createdAt
@@ -329,21 +269,13 @@ function MyOrders() {
                                 : "N/A"}
                             </td>
 
-                            {/* ITEMS */}
-
                             <td>{itemCount}</td>
 
-                            {/* TOTAL */}
-
                             <td className="order-total">₹{total.toFixed(2)}</td>
-
-                            {/* PAYMENT */}
 
                             <td className="payment-text">
                               {order.paymentMethod || "Cash On Delivery"}
                             </td>
-
-                            {/* STATUS */}
 
                             <td>
                               <span
@@ -354,8 +286,6 @@ function MyOrders() {
                                 {status}
                               </span>
                             </td>
-
-                            {/* ACTION */}
 
                             <td>
                               <button

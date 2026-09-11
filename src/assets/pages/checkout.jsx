@@ -21,10 +21,6 @@ function Checkout() {
 
   const [payment, setPayment] = useState("");
 
-  // =====================================================
-  // LOAD CART
-  // =====================================================
-
   useEffect(() => {
     const storedCart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -33,17 +29,9 @@ function Checkout() {
     }
   }, [navigate]);
 
-  // =====================================================
-  // PRICE
-  // =====================================================
-
   const getPrice = (product) => {
     return Number(product.offerPrice || product.mrp || 0);
   };
-
-  // =====================================================
-  // BILLING INPUT
-  // =====================================================
 
   const handleBillingChange = (e) => {
     const { name, value } = e.target;
@@ -54,10 +42,6 @@ function Checkout() {
     }));
   };
 
-  // =====================================================
-  // CALCULATION
-  // =====================================================
-
   const subtotal = cart.reduce((total, product) => {
     const price = getPrice(product);
 
@@ -67,10 +51,6 @@ function Checkout() {
   const deduction = 0;
 
   const total = subtotal - deduction;
-
-  // =====================================================
-  // PLACE ORDER
-  // =====================================================
 
   const handlePlaceOrder = async () => {
     if (cart.length === 0) {
@@ -95,10 +75,6 @@ function Checkout() {
       alert("Please select a payment method.");
       return;
     }
-
-    // =====================================================
-    // CHECK LOGIN
-    // =====================================================
 
     const token = localStorage.getItem("token");
 
@@ -133,10 +109,6 @@ function Checkout() {
 
       console.log("Sending order:", orderData);
 
-      // =====================================================
-      // SEND JWT TO BACKEND
-      // =====================================================
-
       const res = await API.post("/orders", orderData, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -146,19 +118,11 @@ function Checkout() {
       if (res.data.success) {
         alert("Order placed successfully!");
 
-        // ===================================================
-        // CLEAR CART
-        // ===================================================
-
         localStorage.removeItem("cart");
 
         window.dispatchEvent(new Event("cartUpdated"));
 
         setCart([]);
-
-        // ===================================================
-        // RESET BILLING
-        // ===================================================
 
         setBilling({
           firstName: "",

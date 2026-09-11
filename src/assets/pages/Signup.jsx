@@ -12,10 +12,6 @@ function Signup() {
 
   const [loading, setLoading] = useState(false);
 
-  // =====================================================
-  // REGISTER
-  // =====================================================
-
   const handleRegister = async (e) => {
     e.preventDefault();
 
@@ -38,14 +34,9 @@ function Signup() {
       if (res.data.success) {
         alert("Registration successful. Please login.");
 
-        // Clear form
         setuserName("");
         setemail("");
         setpassword("");
-
-        // IMPORTANT:
-        // Do NOT save token here.
-        // User must login after registration.
 
         navigate("/login", { replace: true });
       }
@@ -66,10 +57,6 @@ function Signup() {
       <section className="login">
         <div className="overall-container">
           <div className="sub-container">
-            {/* =================================================
-                SIGNUP FORM
-            ================================================= */}
-
             <div className="login-container">
               <img src="/images/Logo_png.png" alt="LaVogue" />
 
@@ -77,8 +64,6 @@ function Signup() {
 
               <form onSubmit={handleRegister}>
                 <div className="input-fields">
-                  {/* USERNAME */}
-
                   <input
                     type="text"
                     placeholder="Username"
@@ -86,16 +71,12 @@ function Signup() {
                     onChange={(e) => setuserName(e.target.value)}
                   />
 
-                  {/* EMAIL */}
-
                   <input
                     type="email"
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setemail(e.target.value)}
                   />
-
-                  {/* PASSWORD */}
 
                   <input
                     type="password"
@@ -105,16 +86,12 @@ function Signup() {
                   />
                 </div>
 
-                {/* REGISTER BUTTON */}
-
                 <div className="login-btn">
                   <button type="submit" disabled={loading}>
                     {loading ? "Registering..." : "Register"}
                   </button>
                 </div>
               </form>
-
-              {/* SOCIAL */}
 
               <div className="hr-line">
                 <hr />
@@ -133,11 +110,11 @@ function Signup() {
                   Facebook
                 </button>
               </div>
+              <div className="mobile-auth-switch">
+                <span>Already have an account?</span>
+                <Link to="/login">Login</Link>
+              </div>
             </div>
-
-            {/* =================================================
-                LOGIN SIDE
-            ================================================= */}
 
             <div className="img-container" id="con">
               <div className="img" id="img">

@@ -1,7 +1,3 @@
-/* =====================================================
-   RESET
-===================================================== */
-
 * {
   box-sizing: border-box;
 }
@@ -15,11 +11,6 @@ body,
   padding: 0;
   font-family: system-ui, sans-serif;
 }
-
-/* =====================================================
-   AUTH PAGE
-===================================================== */
-
 .auth-page {
   width: 100%;
   height: 100vh;
@@ -29,11 +20,6 @@ body,
   background: #ffffff;
   overflow: hidden;
 }
-
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
-
 .auth-container {
   position: relative;
   width: 100%;
@@ -41,11 +27,6 @@ body,
   overflow: hidden;
   background: white;
 }
-
-/* =====================================================
-   FORM COMMON
-===================================================== */
-
 .auth-form {
   position: absolute;
   top: 0;
@@ -62,12 +43,6 @@ body,
     opacity 0.5s ease;
   z-index: 2;
 }
-
-/* =====================================================
-   LOGIN FORM
-   LOGIN FORM IS ON RIGHT
-===================================================== */
-
 .login-form {
   left: 50%;
   transform: translateX(0);
@@ -75,17 +50,12 @@ body,
 }
 .login-form form {
   width: 100%;
-  margin-left: 42px;
+  /* margin-left: 42px; */
 }
 .signup-form form {
   width: 100%;
   margin-left: 40px;
 }
-
-/* =====================================================
-   SIGNUP FORM
-   SIGNUP FORM STARTS OUTSIDE LEFT
-===================================================== */
 
 .signup-form {
   left: 0;
@@ -93,36 +63,21 @@ body,
   opacity: 0;
 }
 
-/* =====================================================
-   SIGNUP MODE
-===================================================== */
-
-/* Login moves out to the right */
 .auth-container.signup-mode .login-form {
   transform: translateX(100%);
   opacity: 0;
 }
 
-/* Signup comes in from the left */
 .auth-container.signup-mode .signup-form {
   transform: translateX(0);
   opacity: 1;
 }
-
-/* =====================================================
-   LOGO
-===================================================== */
 
 .auth-logo {
   width: 220px;
   margin-bottom: 20px;
   object-fit: contain;
 }
-
-/* =====================================================
-   TITLE
-===================================================== */
-
 .auth-form h2 {
   font-size: 26px;
   font-weight: 400;
@@ -130,18 +85,12 @@ body,
   color: #111;
   text-align: center;
 }
-
-/* =====================================================
-   INPUTS
-===================================================== */
-
 .auth-inputs {
   width: 100%;
   max-width: 420px;
   display: flex;
   flex-direction: column;
 }
-
 .auth-inputs input {
   width: 100%;
   height: 52px;
@@ -153,15 +102,9 @@ body,
   background: white;
   transition: border 0.2s ease;
 }
-
 .auth-inputs input:focus {
   border-color: #a07adc;
 }
-
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
-
 .forgot-password {
   width: 100%;
   max-width: 420px;
@@ -169,20 +112,13 @@ body,
   margin: 2px 0 22px;
   font-size: 14px;
 }
-
 .forgot-password a {
   color: #555;
   text-decoration: none;
 }
-
 .forgot-password a:hover {
   color: #a07adc;
 }
-
-/* =====================================================
-   MAIN BUTTON
-===================================================== */
-
 .auth-submit {
   width: 100%;
   max-width: 420px;
@@ -194,20 +130,13 @@ body,
   cursor: pointer;
   transition: background 0.3s ease;
 }
-
 .auth-submit:hover {
   background: #8d65cc;
 }
-
 .auth-submit:disabled {
   opacity: 0.7;
   cursor: not-allowed;
 }
-
-/* =====================================================
-   DIVIDER
-===================================================== */
-
 .auth-divider {
   width: 100%;
   max-width: 420px;
@@ -216,7 +145,6 @@ body,
   gap: 15px;
   margin: 25px 0 15px;
 }
-
 .auth-divider::before,
 .auth-divider::after {
   content: "";
@@ -224,24 +152,17 @@ body,
   height: 1px;
   background: #ddd;
 }
-
 .auth-divider span {
   color: #777;
   font-size: 14px;
   white-space: nowrap;
 }
-
-/* =====================================================
-   SOCIAL BUTTONS
-===================================================== */
-
 .social-btns {
   width: 100%;
   max-width: 420px;
   display: flex;
   gap: 10px;
 }
-
 .social-btns button {
   flex: 1;
   height: 48px;
@@ -251,19 +172,15 @@ body,
   font-size: 14px;
   transition: background 0.3s ease;
 }
-
 .social-btns button:hover {
   background: #e8e8e8;
 }
-
 .social-btns i {
   margin-right: 7px;
 }
-
-/* =====================================================
-   PURPLE MOVING PANEL
-===================================================== */
-
+.mobile-auth-switch {
+  display: none;
+}
 .welcome-panel {
   position: absolute;
   top: 0;
@@ -282,10 +199,6 @@ body,
     border-radius 0.9s ease;
 }
 
-/* =====================================================
-   PURPLE PANEL MOVES RIGHT
-===================================================== */
-
 .auth-container.signup-mode .welcome-panel {
   transform: translateX(100%);
   border-top-right-radius: 0;
@@ -293,10 +206,6 @@ body,
   border-top-left-radius: 180px;
   border-bottom-left-radius: 180px;
 }
-
-/* =====================================================
-   WELCOME CONTENT
-===================================================== */
 
 .welcome-content {
   width: 100%;
@@ -309,26 +218,22 @@ body,
   color: white;
   padding: 30px;
 }
-
 .welcome-content img {
   width: 390px;
   height: 390px;
   object-fit: contain;
   margin-bottom: 5px;
 }
-
 .welcome-content h1 {
   font-size: 46px;
   margin: 5px 0 10px;
   font-weight: 600;
 }
-
 .welcome-content h4 {
   font-size: 17px;
   margin: 0 0 22px;
   font-weight: 400;
 }
-
 .welcome-button {
   display: flex;
   justify-content: center;
@@ -345,85 +250,80 @@ body,
     background 0.3s ease,
     color 0.3s ease;
 }
-
 .welcome-button:hover {
   background: white;
   color: #a07adc;
 }
-
-/* =====================================================
-   LARGE SCREENS
-===================================================== */
 
 @media (min-width: 1400px) {
   .auth-form {
     padding-left: 10%;
     padding-right: 10%;
   }
-
   .welcome-content img {
     width: 420px;
     height: 420px;
   }
-
   .welcome-content h1 {
     font-size: 50px;
   }
 }
 
-/* =====================================================
-   TABLET
-===================================================== */
-
 @media (max-width: 900px) {
   .auth-form {
     padding: 35px;
   }
-
   .welcome-content img {
     width: 280px;
     height: 300px;
   }
-
   .welcome-content h1 {
     font-size: 34px;
   }
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
-
 @media (max-width: 600px) {
   .auth-container {
     height: 100vh;
   }
-
   .auth-form {
     width: 100%;
     left: 0;
-
     padding: 30px;
   }
-
   .welcome-panel {
     display: none;
   }
-
   .signup-form {
     transform: translateX(100%);
   }
-
   .auth-container.signup-mode .signup-form {
     transform: translateX(0);
   }
-
   .auth-container.signup-mode .login-form {
     transform: translateX(-100%);
   }
-
   .auth-logo {
     width: 190px;
+  }
+  .mobile-auth-switch {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    margin-top: 20px;
+    font-size: 12px;
+  }
+  .mobile-auth-switch span {
+    color: #555;
+  }
+  .mobile-auth-switch a {
+    color: #a07adc;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .mobile-auth-switch a:hover {
+    text-decoration: underline;
   }
 }
 /* =====================================================
@@ -438,8 +338,6 @@ body,
   position: relative;
   overflow: hidden;
 }
-
-/* MAIN CONTAINER */
 .landingcontainer {
   width: 100%;
   height: 100vh;
@@ -447,11 +345,6 @@ body,
   padding: 0;
   position: relative;
 }
-
-/* =====================================================
-   IMAGE
-===================================================== */
-
 .landingsubcontainer {
   width: 100%;
   height: 100vh;
@@ -459,7 +352,11 @@ body,
   padding: 0;
   overflow: hidden;
 }
-
+.landingsubcontainer picture {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 .landingsubcontainer img {
   width: 100%;
   height: 100%;
@@ -467,11 +364,6 @@ body,
   object-fit: cover;
   object-position: center;
 }
-
-/* =====================================================
-   TEXT ON IMAGE - LEFT SIDE
-===================================================== */
-
 .landing-text {
   position: absolute;
   top: 50%;
@@ -483,37 +375,23 @@ body,
   align-items: flex-start;
   z-index: 10;
 }
-
-/* HEADING */
-
 .landing-text h1 {
   margin: 0 0 15px;
   font-size: 56px;
   font-weight: 500;
   color: #222;
 }
-
-/* SUBTEXT */
-
 .landing-text .subtext {
   margin: 0 0 10px;
   font-size: 20px;
   line-height: 1.5;
   color: #333;
 }
-
-/* TAGLINE */
-
 .landing-text .tagline {
   margin: 0 0 30px;
   font-size: 16px;
   color: #555;
 }
-
-/* =====================================================
-   SHOP NOW BUTTON
-===================================================== */
-
 .landing-text button {
   padding: 13px 35px;
   border: 1px solid white;
@@ -523,12 +401,10 @@ body,
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 .landing-text button:hover {
   background-color: #8b63d2;
   transform: translateY(-2px);
 }
-
 .landing-text button a {
   color: #fff;
   text-decoration: none;
@@ -536,10 +412,6 @@ body,
   font-size: 16px;
   font-weight: 500;
 }
-
-/* =====================================================
-   MOBILE
-===================================================== */
 
 @media (max-width: 900px) {
   .landing {
@@ -568,10 +440,6 @@ body,
   }
 }
 
-/* =====================================================
-   SMALL MOBILE
-===================================================== */
-
 @media (max-width: 500px) {
   .landing-text {
     left: 5%;
@@ -588,5 +456,206 @@ body,
 
   .landing-text .tagline {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .landing-text {
+    left: 6%;
+    width: 88%;
+  }
+
+  .landing-text h1 {
+    font-size: 42px;
+  }
+
+  .landing-text .subtext {
+    font-size: 18px;
+    max-width: 400px;
+  }
+
+  .landing-text .tagline {
+    font-size: 15px;
+  }
+
+  .landing-text button {
+    padding: 12px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing,
+  .landingcontainer,
+  .landingsubcontainer {
+    height: 100dvh;
+    min-height: 600px;
+  }
+
+  .landingsubcontainer img {
+    object-position: center top;
+  }
+
+  .landing-text {
+    top: 32%;
+    left: 5%;
+    width: 90%;
+  }
+
+  .landing-text h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .landing-text .subtext {
+    font-size: 16px;
+    line-height: 1.4;
+    max-width: 100%;
+  }
+
+  .landing-text .tagline {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+
+  .landing-text button {
+    padding: 11px 28px;
+  }
+
+  .landing-text button a {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .landing-text {
+    top: 28%;
+  }
+
+  .landing-text h1 {
+    font-size: 32px;
+  }
+
+  .landing-text .subtext {
+    font-size: 15px;
+  }
+
+  .landing-text .tagline {
+    font-size: 13px;
+  }
+
+  .landing-text button {
+    padding: 10px 24px;
+  }
+}
+/* =====================================================
+   LOGIN / SIGNUP - RESPONSIVE IMPROVEMENTS
+===================================================== */
+
+@media (max-width: 900px) {
+  .auth-form {
+    padding: 30px 40px;
+  }
+  .login-form form,
+  .signup-form form {
+    margin-left: 0;
+  }
+  .auth-logo {
+    width: 200px;
+  }
+  .auth-form h2 {
+    font-size: 24px;
+  }
+  .auth-inputs,
+  .forgot-password,
+  .auth-submit,
+  .auth-divider,
+  .social-btns {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 600px) {
+  .auth-page {
+    min-height: 100dvh;
+    height: auto;
+  }
+
+  .auth-container {
+    width: 100%;
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+  .auth-form {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    padding: 25px 20px;
+    overflow-y: auto;
+  }
+  .login-form form,
+  .signup-form form {
+    margin-left: 0;
+  }
+  .auth-logo {
+    width: 170px;
+    margin-bottom: 15px;
+  }
+  .auth-form h2 {
+    font-size: 22px;
+    margin: 5px 0 22px;
+  }
+  .auth-inputs,
+  .forgot-password,
+  .auth-submit,
+  .auth-divider,
+  .social-btns {
+    width: 100%;
+    max-width: 100%;
+  }
+  .auth-inputs input {
+    height: 50px;
+    font-size: 14px;
+  }
+  .auth-submit {
+    height: 50px;
+  }
+  .auth-divider {
+    margin: 20px 0 14px;
+  }
+  .social-btns {
+    gap: 8px;
+  }
+  .social-btns button {
+    height: 46px;
+    font-size: 13px;
+  }
+  .welcome-panel {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .auth-form {
+    padding: 20px 16px;
+  }
+  .auth-logo {
+    width: 150px;
+  }
+  .auth-form h2 {
+    font-size: 20px;
+  }
+  .auth-inputs input {
+    height: 48px;
+    padding: 0 14px;
+  }
+  .auth-submit {
+    height: 48px;
+  }
+  .social-btns {
+    flex-direction: column;
+  }
+  .social-btns button {
+    width: 100%;
+    padding: 10px 0;
   }
 }

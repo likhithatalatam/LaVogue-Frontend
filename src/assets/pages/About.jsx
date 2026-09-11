@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-// import "../css/ABout.css";
 
 import coverImg from "/images/Brown Aesthetic Jewelry and Accessories Etsy Shop Cover.png";
 import blog2 from "/images/blog2.jpeg";

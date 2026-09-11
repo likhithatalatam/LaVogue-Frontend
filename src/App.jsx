@@ -18,10 +18,6 @@ import Landing from "./assets/pages/Landing";
 import MyOrders from "./assets/pages/MyOrders";
 import MyOrderDetails from "./assets/pages/MyOrderDetails";
 
-// =====================================================
-// PROTECTED ROUTE
-// =====================================================
-
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("token");
 
@@ -32,31 +28,15 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
-// =====================================================
-// APP
-// =====================================================
-
 function App() {
   return (
     <Routes>
-      {/* =================================================
-          PUBLIC PAGES
-      ================================================= */}
-
-      {/* Landing page */}
       <Route path="/" element={<Landing />} />
 
-      {/* Login */}
       <Route path="/login" element={<Auth />} />
 
-      {/* Signup */}
       <Route path="/signup" element={<Auth />} />
 
-      {/* =================================================
-          PROTECTED CUSTOMER PAGES
-      ================================================= */}
-
-      {/* Home */}
       <Route
         path="/home"
         element={
@@ -66,7 +46,6 @@ function App() {
         }
       />
 
-      {/* About */}
       <Route
         path="/about"
         element={
@@ -76,7 +55,6 @@ function App() {
         }
       />
 
-      {/* Cart */}
       <Route
         path="/cart"
         element={
@@ -86,7 +64,6 @@ function App() {
         }
       />
 
-      {/* Checkout */}
       <Route
         path="/checkout"
         element={
@@ -96,7 +73,6 @@ function App() {
         }
       />
 
-      {/* Collection Grid */}
       <Route
         path="/collectiongrid"
         element={
@@ -106,7 +82,6 @@ function App() {
         }
       />
 
-      {/* Collection */}
       <Route
         path="/collection"
         element={
@@ -116,7 +91,6 @@ function App() {
         }
       />
 
-      {/* Contact */}
       <Route
         path="/contact"
         element={
@@ -126,7 +100,6 @@ function App() {
         }
       />
 
-      {/* My Profile */}
       <Route
         path="/myprofile"
         element={
@@ -136,7 +109,6 @@ function App() {
         }
       />
 
-      {/* Product */}
       <Route
         path="/product/:id"
         element={
@@ -146,7 +118,6 @@ function App() {
         }
       />
 
-      {/* Wishlist */}
       <Route
         path="/wishlist"
         element={
@@ -156,7 +127,6 @@ function App() {
         }
       />
 
-      {/* My Orders */}
       <Route
         path="/myorders"
         element={
@@ -166,7 +136,6 @@ function App() {
         }
       />
 
-      {/* My Order Details */}
       <Route
         path="/myorderdetails/:id"
         element={
@@ -175,10 +144,6 @@ function App() {
           </ProtectedRoute>
         }
       />
-
-      {/* =================================================
-          UNKNOWN URL
-      ================================================= */}
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>

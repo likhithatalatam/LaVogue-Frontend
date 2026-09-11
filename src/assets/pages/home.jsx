@@ -9,10 +9,6 @@ function Home() {
   const [brands, setbrands] = useState([]);
   const [products, setproducts] = useState([]);
 
-  // ============================================
-  // HOME MANAGEMENT DATA
-  // ============================================
-
   const [homeData, setHomeData] = useState({
     heroBanners: [],
     carouselImages: [],
@@ -22,10 +18,6 @@ function Home() {
   });
 
   const [loading, setLoading] = useState(true);
-
-  // ============================================
-  // FETCH HOME DATA
-  // ============================================
 
   useEffect(() => {
     const fetchHomeData = async () => {
@@ -38,27 +30,11 @@ function Home() {
             API.get("/home"),
           ]);
 
-        // ========================================
-        // CATEGORIES
-        // ========================================
-
         setcategories(categoriesRes.data.data || []);
-
-        // ========================================
-        // BRANDS
-        // ========================================
 
         setbrands(brandsRes.data.data || []);
 
-        // ========================================
-        // PRODUCTS
-        // ========================================
-
         setproducts(productsRes.data.data || []);
-
-        // ========================================
-        // HOME MANAGEMENT
-        // ========================================
 
         if (homeRes.data.success) {
           setHomeData({
@@ -79,10 +55,6 @@ function Home() {
     fetchHomeData();
   }, []);
 
-  // ============================================
-  // LATEST PRODUCTS
-  // ============================================
-
   const latestProducts = [...products]
     .sort((a, b) => {
       const dateA = new Date(a.createdAt || 0).getTime();
@@ -93,22 +65,7 @@ function Home() {
     })
     .slice(0, 8);
 
-  // ============================================
-  // BEST SELLERS
-  // ============================================
-
-  /*
-    Best sellers now come from the backend.
-
-    The backend sorts products using soldCount
-    and applies the admin-selected limit.
-  */
-
   const bestSellerProducts = homeData.bestSellers || [];
-
-  // ============================================
-  // ACTIVE HERO BANNERS
-  // ============================================
 
   const activeHeroBanners = (homeData.heroBanners || [])
     .filter((banner) => banner.isActive)
@@ -116,23 +73,11 @@ function Home() {
       return Number(a.order || 0) - Number(b.order || 0);
     });
 
-  // ============================================
-  // ACTIVE CAROUSEL IMAGES
-  // ============================================
-
   const activeCarouselImages = (homeData.carouselImages || [])
     .filter((image) => image.isActive)
     .sort((a, b) => {
       return Number(a.order || 0) - Number(b.order || 0);
     });
-
-  // ============================================
-  // IMAGE URL
-  // ============================================
-
-  // ============================================
-  // PRODUCT CARD
-  // ============================================
 
   const ProductCard = ({ product }) => {
     return (
@@ -166,10 +111,6 @@ function Home() {
     );
   };
 
-  // ============================================
-  // LOADING
-  // ============================================
-
   if (loading) {
     return (
       <>
@@ -194,10 +135,6 @@ function Home() {
       <Navbar />
 
       <div className="home">
-        {/* =================================================
-            CAROUSEL / HERO BANNERS
-        ================================================= */}
-
         <section>
           <div className="carousal-list">
             <div
@@ -206,10 +143,6 @@ function Home() {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner">
-                {/* ==========================================
-                    ADMIN HERO BANNERS
-                ========================================== */}
-
                 {activeHeroBanners.length > 0 ? (
                   activeHeroBanners.map((banner, index) => (
                     <div
@@ -235,10 +168,6 @@ function Home() {
                     </div>
                   ))
                 ) : (
-                  /* ========================================
-                     FALLBACK OLD IMAGES
-                  ======================================== */
-
                   <>
                     <div
                       className="carousel-item active"
@@ -301,10 +230,6 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            BENEFITS
-        ================================================= */}
-
         <section>
           <div className="CustomerCareBenefits">
             <div className="benefits">
@@ -329,10 +254,6 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            MAIN CATEGORIES
-        ================================================= */}
-
         <section>
           <div className="main-categories">
             <a href="#">
@@ -344,10 +265,6 @@ function Home() {
             </a>
           </div>
         </section>
-
-        {/* =================================================
-            LATEST PRODUCTS
-        ================================================= */}
 
         <section>
           <div className="latest-collection">
@@ -371,10 +288,6 @@ function Home() {
             </div>
           </div>
         </section>
-
-        {/* =================================================
-            SHOP BY CATEGORY
-        ================================================= */}
 
         <section>
           <div className="category-head">
@@ -406,10 +319,6 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            MAIN BANNER
-        ================================================= */}
-
         <section>
           <div className="banner1">
             {activeCarouselImages.length > 0 ? (
@@ -434,10 +343,6 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            SHOP BY BRAND
-        ================================================= */}
-
         <section>
           <div className="brand-head">
             <h3>Pick Your Preferred Brand</h3>
@@ -456,10 +361,6 @@ function Home() {
           </div>
         </section>
 
-        {/* =================================================
-            COUPONS
-        ================================================= */}
-
         <section>
           <div className="coupens-section">
             <div className="coupens">
@@ -471,10 +372,6 @@ function Home() {
             </div>
           </div>
         </section>
-
-        {/* =================================================
-            BEST SELLER
-        ================================================= */}
 
         {homeData.bestSellerActive && (
           <section>
@@ -504,10 +401,6 @@ function Home() {
             </div>
           </section>
         )}
-
-        {/* =================================================
-            ADDITIONAL BANNERS
-        ================================================= */}
 
         <section>
           <div className="banner3">
@@ -560,10 +453,6 @@ function Home() {
                 </div>
               </>
             ) : (
-              /* ==========================================
-                 FALLBACK OLD BANNERS
-              ========================================== */
-
               <>
                 <div className="banner3-imgset1">
                   <img className="ban-img1" src="/images/ban1.jpg" alt="" />
@@ -580,10 +469,6 @@ function Home() {
             )}
           </div>
         </section>
-
-        {/* =================================================
-            BLOG
-        ================================================= */}
 
         <section>
           <div className="blog-section">

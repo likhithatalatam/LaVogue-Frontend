@@ -13,8 +13,6 @@ function Wishlist() {
     setWishlist(storedWishlist);
   }, []);
 
-  // ================= REMOVE FROM WISHLIST =================
-
   const removeFromWishlist = (id) => {
     const updatedWishlist = wishlist.filter((item) => item._id !== id);
 
@@ -22,8 +20,6 @@ function Wishlist() {
 
     localStorage.setItem("wishlist", JSON.stringify(updatedWishlist));
   };
-
-  // ================= ADD TO CART =================
 
   const addToCart = (product) => {
     const existingCart = JSON.parse(localStorage.getItem("cart")) || [];
@@ -138,6 +134,7 @@ function Wishlist() {
                                   Add to Cart
                                 </a>
                               </p>
+
                               <p>
                                 <a
                                   href="#"

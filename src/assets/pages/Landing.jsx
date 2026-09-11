@@ -6,21 +6,19 @@ function Landing() {
   return (
     <section className="landing">
       <div className="landingcontainer">
-        {/* =================================================
-            IMAGE
-        ================================================= */}
-
         <div className="landingsubcontainer">
-          <img
-            src="/images/lan.png"
-            alt="LaVogue Fashion"
-            fetchPriority="high"
-          />
+          <picture>
+            <source
+              media="(max-width: 480px)"
+              srcSet="/images/lan-mobile.png"
+            />
+            <img
+              src="/images/lan.png"
+              alt="LaVogue Fashion"
+              fetchPriority="high"
+            />
+          </picture>
         </div>
-
-        {/* =================================================
-            CONTENT
-        ================================================= */}
 
         <div className="landing-text">
           <h1>LaVogue</h1>
@@ -30,14 +28,6 @@ function Landing() {
           </p>
 
           <p className="tagline">Curated collections for modern elegance</p>
-
-          {/* =================================================
-              AUTH BUTTONS
-          ================================================= */}
-
-          {/* =================================================
-              SHOP NOW
-          ================================================= */}
 
           <div>
             <button type="button">

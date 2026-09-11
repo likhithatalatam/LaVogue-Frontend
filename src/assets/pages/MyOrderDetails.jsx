@@ -12,19 +12,11 @@ function MyOrderDetails() {
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // =====================================================
-  // ACTIVE MENU
-  // =====================================================
-
   const isProfileActive = location.pathname === "/myprofile";
 
   const isOrdersActive =
     location.pathname === "/myorders" ||
     location.pathname.startsWith("/myorderdetails");
-
-  // =====================================================
-  // FETCH ORDER
-  // =====================================================
 
   useEffect(() => {
     const fetchOrder = async () => {
@@ -68,10 +60,6 @@ function MyOrderDetails() {
     fetchOrder();
   }, [id, navigate]);
 
-  // =====================================================
-  // STATUS CLASS
-  // =====================================================
-
   const getStatusClass = (status) => {
     const normalizedStatus = String(status || "")
       .trim()
@@ -102,10 +90,6 @@ function MyOrderDetails() {
     }
   };
 
-  // =====================================================
-  // LOADING
-  // =====================================================
-
   if (loading) {
     return (
       <div className="orders-loading">
@@ -115,10 +99,6 @@ function MyOrderDetails() {
       </div>
     );
   }
-
-  // =====================================================
-  // ORDER NOT FOUND
-  // =====================================================
 
   if (!order) {
     return (
@@ -137,10 +117,6 @@ function MyOrderDetails() {
       </div>
     );
   }
-
-  // =====================================================
-  // DATA
-  // =====================================================
 
   const billing = order.billingDetails || {};
 
@@ -164,27 +140,15 @@ function MyOrderDetails() {
     order.paymentStatus ||
     (paymentMethod === "Cash On Delivery" ? "Pending" : "Paid");
 
-  // =====================================================
-  // UI
-  // =====================================================
-
   return (
     <>
       <header>
-        {/* =================================================
-            LOGO
-        ================================================= */}
-
         <div className="logo-nav">
           <img src="/images/Logo_png.png" alt="LaVogue" />
         </div>
 
         <div className="myprofile">
           <div className="main-container">
-            {/* =================================================
-                SIDE MENU
-            ================================================= */}
-
             <div className="side-header">
               <div className="profile-img">
                 <img src="/images/card4.jpg" alt="Profile" />
@@ -194,8 +158,6 @@ function MyOrderDetails() {
 
               <div className="List">
                 <ul>
-                  {/* PROFILE */}
-
                   <div
                     className={`div1 ${isProfileActive ? "active-menu" : ""}`}
                   >
@@ -211,8 +173,6 @@ function MyOrderDetails() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* ORDERS */}
 
                   <div
                     className={`div1 ${isOrdersActive ? "active-menu" : ""}`}
@@ -230,8 +190,6 @@ function MyOrderDetails() {
                     </a>
                   </div>
 
-                  {/* SETTINGS */}
-
                   <div className="div1">
                     <a href="#" onClick={(e) => e.preventDefault()}>
                       <li>Settings</li>
@@ -239,8 +197,6 @@ function MyOrderDetails() {
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
-
-                  {/* LOGOUT */}
 
                   <div className="div1">
                     <a
@@ -266,13 +222,7 @@ function MyOrderDetails() {
               </div>
             </div>
 
-            {/* =================================================
-                ORDER DETAILS CONTENT
-            ================================================= */}
-
             <div className="sub-container order-details-container">
-              {/* TOP ROW */}
-
               <div className="top-row">
                 <div className="heading">
                   <h4>Order #{order._id?.slice(-6).toUpperCase()}</h4>
@@ -283,10 +233,6 @@ function MyOrderDetails() {
                   Back
                 </div>
               </div>
-
-              {/* =================================================
-                  ORDER SUMMARY
-              ================================================= */}
 
               <div className="order-summary-grid">
                 <div className="summary-card">
@@ -333,10 +279,6 @@ function MyOrderDetails() {
                   </div>
                 </div>
               </div>
-
-              {/* =================================================
-                  CUSTOMER DETAILS
-              ================================================= */}
 
               <section className="details-section">
                 <div className="section-title">
@@ -391,10 +333,6 @@ function MyOrderDetails() {
                 </div>
               </section>
 
-              {/* =================================================
-                  PRODUCTS
-              ================================================= */}
-
               <section className="details-section">
                 <div className="section-title">
                   <div className="section-icon">
@@ -443,8 +381,6 @@ function MyOrderDetails() {
                                 product.productId || product._id || index
                               }-${index}`}
                             >
-                              {/* IMAGE */}
-
                               <td>
                                 <div className="product-image-box">
                                   {image ? (
@@ -458,31 +394,19 @@ function MyOrderDetails() {
                                 </div>
                               </td>
 
-                              {/* PRODUCT */}
-
                               <td>
                                 <strong className="product-name">
                                   {productName}
                                 </strong>
                               </td>
 
-                              {/* COLOR */}
-
                               <td>{product.color || "N/A"}</td>
-
-                              {/* SIZE */}
 
                               <td>{product.size || "N/A"}</td>
 
-                              {/* PRICE */}
-
                               <td>₹{price.toFixed(2)}</td>
 
-                              {/* QUANTITY */}
-
                               <td>{quantity}</td>
-
-                              {/* TOTAL */}
 
                               <td className="product-line-total">
                                 ₹{(price * quantity).toFixed(2)}
@@ -501,10 +425,6 @@ function MyOrderDetails() {
                   </table>
                 </div>
               </section>
-
-              {/* =================================================
-                  PAYMENT DETAILS
-              ================================================= */}
 
               <section className="details-section">
                 <div className="section-title">
@@ -533,10 +453,6 @@ function MyOrderDetails() {
                   </div>
                 </div>
               </section>
-
-              {/* =================================================
-                  PRICE DETAILS
-              ================================================= */}
 
               <section className="details-section price-section">
                 <div className="section-title">

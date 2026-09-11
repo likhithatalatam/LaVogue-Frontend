@@ -1,6 +1,7 @@
 .wishlist_page .categories ul li a:hover {
   color: #818494;
 }
+
 .sub_container {
   color: black;
   background-color: #f2f2f2;
@@ -10,6 +11,7 @@
   flex-direction: column;
   justify-content: center;
 }
+
 .sub_container h3 {
   margin: 0px;
   padding-top: 20px;
@@ -18,29 +20,30 @@
   letter-spacing: 4px;
   font-weight: 600;
 }
+
 .sub1 {
   display: flex;
   flex-direction: row;
   align-items: baseline;
   padding-left: 20px;
 }
+
 .sub1 p {
   margin-top: 20px;
   margin-right: 10px;
 }
+
 .sub1 i {
   margin-right: 5px;
 }
+
 .main-container {
-  /* position: absolute;
-  top: 12.6%;
-  z-index: -1;
-  width: 100%;
-  font-family: sans-serif; */
+
   position: relative;
   width: 100%;
   font-family: sans-serif;
 }
+
 .sub-container2 {
   padding-top: 78px;
   display: flex;
@@ -48,6 +51,7 @@
   justify-content: center;
   align-items: center;
 }
+
 .sort-div {
   display: flex;
   flex-direction: row;
@@ -60,37 +64,9 @@
   padding-bottom: 10px;
   padding-right: 50px;
 }
-/* .grid-icons button {
-  padding: 3px 9px;
-  border: 1px solid #d1d1d1;
-  background-color: white;
-}
-.grid-icons button i {
-  font-size: 25px;
-  color: grey;
-}
-.sorting1 select {
-  padding: 10px 37px;
-  border: 1px solid #d1d1d1;
-  outline: none;
-}
-.sorting1 {
-  margin: 0 35px;
-} */
-/* .sorting2 select {
-  padding: 10px 15px;
-  width: 222px;
-  border: 1px solid #d1d1d1;
-  outline: none;
-}
-.sort-list {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-} */
-/* .sort-p p {
-  margin: 13px 9px;
-} */
+
+
+
 .wishlist_page .Wishlist h5 {
   margin-left: 142px;
   margin-top: 60px;
@@ -100,6 +76,7 @@
   font-family: sans-serif;
   text-decoration: overline;
 }
+
 .wishlist_page .collection-section {
   width: 100%;
   display: flex;
@@ -107,45 +84,55 @@
   justify-content: center;
   align-items: center;
 }
+
 .wishlist_page .latest-collection-cards {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 40px 0px;
 }
+
 .wishlist_page .latest-collection-cards img {
   width: 266px;
   height: 284px;
 }
+
 .wishlist_page .card1 {
   width: 266px;
   border: 1px solid rgb(214, 214, 214);
   margin: 20px 27px;
   height: 467px;
 }
+
 .wishlist_page .card1 h5 {
   margin: 18px;
 }
+
 .wishlist_page .card1 hr {
   margin: 9px 0px;
 }
+
 .wishlist_page .card1 p {
   text-align: center;
 }
+
 .wishlist_page .card1 p a {
   text-decoration: none;
   text-transform: uppercase;
   font-size: 14px;
 }
+
 .wishlist_page .card1 h6 {
   margin: 15px;
   text-align: center;
 }
+
 .wishlist_page .rating-icons {
   margin: 5px;
   color: gold;
   text-align: center;
 }
+
 .section {
   display: flex;
   flex-direction: row;

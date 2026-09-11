@@ -9,22 +9,14 @@ function Auth() {
 
   const isSignup = location.pathname === "/signup";
 
-  // ================= LOGIN =================
-
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
-
-  // ================= SIGNUP =================
 
   const [userName, setUserName] = useState("");
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPassword, setSignupPassword] = useState("");
 
   const [loading, setLoading] = useState(false);
-
-  // =====================================================
-  // LOGIN
-  // =====================================================
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -61,10 +53,6 @@ function Auth() {
       setLoading(false);
     }
   };
-
-  // =====================================================
-  // REGISTER
-  // =====================================================
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -107,10 +95,6 @@ function Auth() {
   return (
     <section className="auth-page">
       <div className={`auth-container ${isSignup ? "signup-mode" : ""}`}>
-        {/* =================================================
-            LOGIN FORM
-        ================================================= */}
-
         <div className="auth-form login-form">
           <img
             src="/images/Logo_png.png"
@@ -162,11 +146,11 @@ function Auth() {
               Facebook
             </button>
           </div>
+          <div className="mobile-auth-switch">
+            <span>Don't have an account?</span>
+            <Link to="/signup">Register</Link>
+          </div>
         </div>
-
-        {/* =================================================
-            SIGNUP FORM
-        ================================================= */}
 
         <div className="auth-form signup-form">
           <img
@@ -222,11 +206,11 @@ function Auth() {
               Facebook
             </button>
           </div>
+          <div className="mobile-auth-switch">
+            <span>Already have an account?</span>
+            <Link to="/login">Login</Link>
+          </div>
         </div>
-
-        {/* =================================================
-            MOVING PURPLE PANEL
-        ================================================= */}
 
         <div className="welcome-panel">
           <div className="welcome-content">
