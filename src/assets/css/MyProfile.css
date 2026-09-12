@@ -725,7 +725,17 @@ body {
 /* =====================================================
    MY PROFILE - RESPONSIVE
    ===================================================== */
+@media (min-width: 1199px) and (max-width: 2560px) {
+  .profile-camera {
+    right: 29%;
 
+    width: 39px;
+    height: 39px;
+  }
+  .profile-camera i {
+    font-size: 22px;
+  }
+}
 @media (min-width: 992px) and (max-width: 1199px) {
   .myprofile .main-container {
     gap: 20px;
@@ -759,6 +769,11 @@ body {
 
   .myprofile .heading h4 {
     font-size: 22px;
+  }
+  .profile-camera {
+    right: 28%;
+    width: 33px;
+    height: 33px;
   }
 }
 
@@ -865,6 +880,11 @@ body {
 
   .myprofile .btn-div {
     grid-column: span 2;
+  }
+  .profile-camera {
+    right: 44%;
+    width: 27px;
+    height: 27px;
   }
 }
 
@@ -996,6 +1016,11 @@ body {
   .myprofile .order-summary-grid {
     display: flex;
     flex-direction: column;
+  }
+  .profile-camera {
+    right: 38%;
+    width: 27px;
+    height: 27px;
   }
 }
 
@@ -1131,4 +1156,37 @@ body {
     display: flex;
     flex-direction: column;
   }
+  .profile-camera {
+    right: 37%;
+    width: 27px;
+    height: 27px;
+  }
+}
+.profile-img {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-camera {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transition: 0.3s ease;
+}
+
+.profile-camera i {
+  color: #333;
+}
+
+.profile-img:hover .profile-camera {
+  background: #222;
+}
+
+.profile-img:hover .profile-camera i {
+  color: white;
 }

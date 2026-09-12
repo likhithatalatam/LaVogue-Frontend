@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../css/MyProfile.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import API from "../../api";
+import API, { getImageUrl } from "../../api";
 
 function MyProfile() {
   const navigate = useNavigate();
   const location = useLocation();
+  const fileInputRef = useRef(null);
 
   const [profile, setProfile] = useState({
     userName: "",
@@ -13,10 +14,12 @@ function MyProfile() {
     phone: "",
     location: "",
     bio: "",
+    profileImage: "",
   });
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploadingImage, setUploadingImage] = useState(false);
 
   const isProfileActive = location.pathname === "/myprofile";
 
@@ -50,6 +53,7 @@ function MyProfile() {
             phone: user.phone || "",
             location: user.location || "",
             bio: user.bio || "",
+            profileImage: user.profileImage || "",
           });
         }
       } catch (error) {
@@ -81,6 +85,80 @@ function MyProfile() {
     }));
   };
 
+  const handleImageChange = async (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Please select an image file");
+      return;
+    }
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      alert("Please login first");
+      navigate("/login");
+      return;
+    }
+
+    try {
+      setUploadingImage(true);
+
+      const formData = new FormData();
+      formData.append("profileImage", file);
+
+      const res = await API.put("/users/profile/image", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (res.data.success) {
+        const updatedUser = res.data.data;
+
+        setProfile((prev) => ({
+          ...prev,
+          profileImage: updatedUser.profileImage || "",
+        }));
+
+        const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...storedUser,
+            profileImage: updatedUser.profileImage || "",
+          }),
+        );
+
+        alert("Profile photo updated successfully");
+      }
+    } catch (error) {
+      console.log("PROFILE IMAGE ERROR:", error);
+
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        alert("Session expired. Please login again");
+
+        navigate("/login");
+      } else {
+        alert(
+          error.response?.data?.message || "Failed to update profile photo",
+        );
+      }
+    } finally {
+      setUploadingImage(false);
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = "";
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -110,7 +188,18 @@ function MyProfile() {
           phone: updatedUser.phone || "",
           location: updatedUser.location || "",
           bio: updatedUser.bio || "",
+          profileImage: updatedUser.profileImage || "",
         });
+
+        const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...storedUser,
+            ...updatedUser,
+          }),
+        );
 
         alert("Profile updated successfully");
       }
@@ -148,6 +237,7 @@ function MyProfile() {
       <header>
         <div className="logo-nav">
           <img src="/images/Logo_png.png" alt="LaVogue" />
+
           <div className="back-btn" onClick={() => navigate("/home")}>
             <i className="bi bi-house-door"></i>Home
           </div>
@@ -156,8 +246,30 @@ function MyProfile() {
         <div className="myprofile">
           <div className="main-container">
             <div className="side-header">
-              <div className="profile-img">
-                <img src="/images/card4.jpg" alt="Profile" />
+              <div
+                className="profile-img"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <img
+                  src={
+                    profile.profileImage
+                      ? getImageUrl(profile.profileImage)
+                      : "/images/card4.jpg"
+                  }
+                  alt="Profile"
+                />
+
+                <div className="profile-camera">
+                  <i className="bi bi-camera-fill"></i>
+                </div>
+
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageChange}
+                  style={{ display: "none" }}
+                />
               </div>
 
               <h4>{profile.userName || "User"}</h4>
@@ -175,7 +287,6 @@ function MyProfile() {
                       }}
                     >
                       <li>Profile</li>
-
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
@@ -191,7 +302,6 @@ function MyProfile() {
                       }}
                     >
                       <li>Orders</li>
-
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
@@ -199,7 +309,6 @@ function MyProfile() {
                   <div className="div1">
                     <a href="#" onClick={(e) => e.preventDefault()}>
                       <li>Settings</li>
-
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
@@ -213,7 +322,6 @@ function MyProfile() {
                       }}
                     >
                       <li>Logout</li>
-
                       <i className="bi bi-chevron-right"></i>
                     </a>
                   </div>
@@ -226,6 +334,7 @@ function MyProfile() {
                 <div className="heading">
                   <h4>Profile</h4>
                 </div>
+
                 <div className="back-btn" onClick={() => navigate("/home")}>
                   <i className="bi bi-house-door"></i> Back to Home
                 </div>

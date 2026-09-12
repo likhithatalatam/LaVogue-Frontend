@@ -1,8 +1,90 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 // import "../css/Contact.css";
+import API from "../../api";
+
 function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+
+    setFormData((previous) => ({
+      ...previous,
+      name: storedUser.userName || "",
+      email: storedUser.email || "",
+    }));
+  }, []);
+
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((previous) => ({
+      ...previous,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    if (!formData.name.trim()) {
+      alert("Please enter your name");
+      return;
+    }
+
+    if (!formData.email.trim()) {
+      alert("Please enter your email");
+      return;
+    }
+
+    if (!formData.subject.trim()) {
+      alert("Please enter a subject");
+      return;
+    }
+
+    if (!formData.message.trim()) {
+      alert("Please enter your message");
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const res = await API.post("/contact", formData);
+
+      if (res.data.success) {
+        alert("Your message has been sent successfully.");
+
+        const storedUser = JSON.parse(localStorage.getItem("user")) || {};
+
+        setFormData({
+          name: storedUser.userName || "",
+          email: storedUser.email || "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      }
+    } catch (error) {
+      console.log("CONTACT FORM ERROR:", error);
+
+      alert(
+        error.response?.data?.message ||
+          "Failed to send your message. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -34,10 +116,11 @@ function Contact() {
               <h3>GET IN TOUCH</h3>
               <p>
                 <i>
-                  Nam ac egestas est.Mauris et pulvinar risus,at tincidunt
-                  lorem.Maecenas
+                  Have a question about your order, products, delivery, or
+                  returns?
                   <br />
-                  tristique sit amet adio sit amet aliquet.
+                  Our LaVogue team is here to help and will get back to you
+                  soon.
                 </i>
               </p>
             </div>
@@ -48,37 +131,70 @@ function Contact() {
                   <div className="input-group">
                     <div className="label-input">
                       <label>Your Name*</label>
-                      <input type="text" name="name" required />
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
 
                     <div className="label-input">
                       <label>Your Email*</label>
-                      <input type="email" name="email" required />
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="input-group">
                     <div className="label-input">
                       <label>Your Number</label>
-                      <input type="tel" name="number" />
+                      <input
+                        type="tel"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
                     </div>
 
                     <div className="label-input">
-                      <label>Your Website URL</label>
-                      <input type="url" name="website" />
+                      <label>Subject*</label>
+                      <input
+                        type="text"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleChange}
+                        required
+                      />
                     </div>
                   </div>
 
                   <div className="message-box">
                     <label>Your Message*</label>
                     <br />
-                    <textarea name="message" required></textarea>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    ></textarea>
                   </div>
                 </div>
               </div>
 
-              <button type="submit" id="sub-btn">
-                Send Message
+              <button
+                type="button"
+                id="sub-btn"
+                onClick={handleSubmit}
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Send Message"}
               </button>
             </section>
           </div>

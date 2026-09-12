@@ -17,6 +17,13 @@ function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
 
+  const [reviews, setReviews] = useState([]);
+  const [reviewRating, setReviewRating] = useState(0);
+  const [reviewComment, setReviewComment] = useState("");
+  const [reviewLoading, setReviewLoading] = useState(false);
+  const [reviewSubmitting, setReviewSubmitting] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
+
   const { id } = useParams();
 
   useEffect(() => {
@@ -39,6 +46,28 @@ function ProductDetail() {
     };
 
     fetchproduct();
+  }, [id]);
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      try {
+        setReviewLoading(true);
+
+        const res = await API.get(`/reviews/${id}`);
+
+        if (res.data.success) {
+          setReviews(res.data.data);
+        }
+      } catch (error) {
+        console.log("REVIEWS ERROR:", error);
+      } finally {
+        setReviewLoading(false);
+      }
+    };
+
+    if (id) {
+      fetchReviews();
+    }
   }, [id]);
 
   const availableColors = useMemo(() => {
@@ -239,6 +268,102 @@ function ProductDetail() {
     alert("Product added to cart");
   };
 
+  const averageRating =
+    reviews.length > 0
+      ? reviews.reduce(
+          (total, review) => total + Number(review.rating || 0),
+          0,
+        ) / reviews.length
+      : 5;
+
+  const displayedReviews = showAllReviews ? reviews : reviews.slice(0, 3);
+
+  const renderStars = (rating) => {
+    const stars = [];
+
+    for (let i = 1; i <= 5; i++) {
+      if (rating >= i) {
+        stars.push(<i key={i} className="bi bi-star-fill"></i>);
+      } else if (rating >= i - 0.5) {
+        stars.push(<i key={i} className="bi bi-star-half"></i>);
+      } else {
+        stars.push(<i key={i} className="bi bi-star"></i>);
+      }
+    }
+
+    return stars;
+  };
+
+  const formatReviewDate = (date) => {
+    if (!date) return "";
+
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+  const handleSubmitReview = async () => {
+    if (!localStorage.getItem("token")) {
+      alert("Please login to leave a review");
+      return;
+    }
+
+    if (!reviewRating) {
+      alert("Please select a rating");
+      return;
+    }
+
+    if (!reviewComment.trim()) {
+      alert("Please write a review");
+      return;
+    }
+
+    try {
+      setReviewSubmitting(true);
+
+      const token = localStorage.getItem("token");
+
+      const res = await API.post(
+        `/reviews/${id}`,
+        {
+          rating: reviewRating,
+          comment: reviewComment,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (res.data.success) {
+        setReviews((prev) => [res.data.data, ...prev]);
+        setReviewRating(0);
+        setReviewComment("");
+        setShowAllReviews(false);
+
+        alert("Review added successfully");
+      }
+    } catch (error) {
+      console.log("SUBMIT REVIEW ERROR:", error);
+
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+
+        alert("Session expired. Please login again");
+        navigate("/login");
+        return;
+      }
+
+      alert(error.response?.data?.message || "Failed to add review");
+    } finally {
+      setReviewSubmitting(false);
+    }
+  };
+
   return (
     <>
       <Navbar />
@@ -247,7 +372,6 @@ function ProductDetail() {
         <div className="main-container">
           <div className="sub-header">
             <h2>PRODUCT</h2>
-
             <div className="sub1">
               <p>Home</p>
 
@@ -293,11 +417,9 @@ function ProductDetail() {
               </h6>
 
               <div className="ratings">
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-fill"></i>
-                <i className="bi bi-star-half"></i>
+                {renderStars(averageRating)}
+
+                <span className="rating-value">{averageRating.toFixed(1)}</span>
               </div>
 
               <h6>
@@ -457,67 +579,86 @@ function ProductDetail() {
             <h4>PRODUCT REVIEWS</h4>
 
             <div className="mar">
-              <div className="review-list">
-                <div className="review-detail">
-                  <img src="/images/ban1.jpg" alt="" />
+              {reviewLoading ? (
+                <p>Loading reviews...</p>
+              ) : reviews.length === 0 ? (
+                <p>No reviews yet.</p>
+              ) : (
+                <>
+                  {displayedReviews.map((review) => (
+                    <div className="review-list" key={review._id}>
+                      <div className="review-detail">
+                        <img
+                          src={
+                            review.user?.profileImage
+                              ? getImageUrl(review.user.profileImage)
+                              : "/images/card4.jpg"
+                          }
+                          alt="Profile"
+                        />
 
-                  <h6>JOHN DOE | 20 JAN 2017</h6>
-                </div>
+                        <div>
+                          <h6>
+                            {review.user?.userName || "User"} |{" "}
+                            {formatReviewDate(review.createdAt)}
+                          </h6>
 
-                <p>
-                  sapien massa, convallis a pellentesq ue neCurabitur aliquet
-                  quam id dui posuere.
-                </p>
-              </div>
+                          <div className="review-stars">
+                            {renderStars(Number(review.rating))}
+                          </div>
+                        </div>
+                      </div>
 
-              <div className="review-list">
-                <div className="review-detail">
-                  <img src="/images/ban2.jpg" alt="" />
+                      <p>{review.comment}</p>
+                    </div>
+                  ))}
 
-                  <h6>JOHN DOE | 10 FEB 2017</h6>
-                </div>
-
-                <p>
-                  sapien massa, convallis a pellentesq ue neCurabitur aliquet
-                  quam id dui posuere.
-                </p>
-              </div>
-
-              <div className="review-list">
-                <div className="review-detail">
-                  <img src="/images/ban3.jpg" alt="" />
-
-                  <h6>JOHN DOE | 15 MAY 2017</h6>
-                </div>
-
-                <p>
-                  sapien massa, convallis a pellentesq ue neCurabitur aliquet
-                  quam id dui posuere.
-                </p>
-              </div>
+                  {reviews.length > 3 && (
+                    <button
+                      type="button"
+                      className="more-reviews-btn"
+                      onClick={() => setShowAllReviews((prev) => !prev)}
+                    >
+                      {showAllReviews ? "Show Less" : "More..."}
+                    </button>
+                  )}
+                </>
+              )}
             </div>
           </div>
 
           <div className="leave-review-section">
             <h4>LEAVE REVIEW</h4>
 
-            <input
-              className="review-name-field"
-              type="text"
-              placeholder="Your Name"
-            />
+            <div className="review-rating-input">
+              <p>Your Rating</p>
 
-            <input
-              className="review-email-field"
-              type="text"
-              placeholder="Your Email"
-            />
+              <div className="rating-select">
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <i
+                    key={star}
+                    className={
+                      reviewRating >= star ? "bi bi-star-fill" : "bi bi-star"
+                    }
+                    onClick={() => setReviewRating(star)}
+                  ></i>
+                ))}
+              </div>
+            </div>
 
-            <br />
+            <textarea
+              placeholder="Your Message"
+              value={reviewComment}
+              onChange={(e) => setReviewComment(e.target.value)}
+            ></textarea>
 
-            <textarea placeholder="Your Message"></textarea>
-
-            <button type="button">Submit</button>
+            <button
+              type="button"
+              onClick={handleSubmitReview}
+              disabled={reviewSubmitting}
+            >
+              {reviewSubmitting ? "Submitting..." : "Submit"}
+            </button>
           </div>
 
           <section>

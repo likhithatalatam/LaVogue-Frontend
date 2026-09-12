@@ -34,6 +34,10 @@ function ProductGrid() {
     fetchproducts();
   }, []);
 
+  const getProductRating = (product) => {
+    return Number(product.averageRating) || 4.5;
+  };
+
   const filteredProducts = useMemo(() => {
     let result = [...products];
 
@@ -77,9 +81,8 @@ function ProductGrid() {
 
     if (sorting === "Sort by average rating") {
       result.sort((a, b) => {
-        const ratingA = Number(a.rating || 0);
-
-        const ratingB = Number(b.rating || 0);
+        const ratingA = getProductRating(a);
+        const ratingB = getProductRating(b);
 
         return ratingB - ratingA;
       });
@@ -179,8 +182,6 @@ function ProductGrid() {
             </div>
           </div>
 
-          {/* PRODUCTS */}
-
           <div className="section">
             <div className="collection-section">
               {displayedProducts.length > 0 ? (
@@ -208,15 +209,36 @@ function ProductGrid() {
                             <h5>{pro.productTitle}</h5>
 
                             <div className="rating-icons">
-                              <i className="bi bi-star-fill"></i>
+                              {Array.from({ length: 5 }, (_, index) => {
+                                const rating = getProductRating(pro);
+                                const starNumber = index + 1;
 
-                              <i className="bi bi-star-fill"></i>
+                                if (rating >= starNumber) {
+                                  return (
+                                    <i
+                                      key={index}
+                                      className="bi bi-star-fill"
+                                    ></i>
+                                  );
+                                }
 
-                              <i className="bi bi-star-fill"></i>
+                                if (rating >= starNumber - 0.5) {
+                                  return (
+                                    <i
+                                      key={index}
+                                      className="bi bi-star-half"
+                                    ></i>
+                                  );
+                                }
 
-                              <i className="bi bi-star-fill"></i>
+                                return (
+                                  <i key={index} className="bi bi-star"></i>
+                                );
+                              })}
 
-                              <i className="bi bi-star-half"></i>
+                              <span className="rating-number">
+                                {getProductRating(pro).toFixed(1)}
+                              </span>
                             </div>
 
                             <h6>${pro.offerPrice || pro.mrp}</h6>
