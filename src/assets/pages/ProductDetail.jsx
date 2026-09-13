@@ -423,7 +423,7 @@ function ProductDetail() {
               </div>
 
               <h6>
-                <span id="actual-price">${product.mrp}</span> $
+                <span id="actual-price">₹{product.mrp}</span> ₹
                 {product.offerPrice || product.mrp}
               </h6>
 

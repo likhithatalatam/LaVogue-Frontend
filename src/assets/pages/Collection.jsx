@@ -616,7 +616,7 @@ function Collection() {
                           </span>
                         </div>
 
-                        <h6>${pro.offerPrice || pro.mrp}</h6>
+                        <h6>₹{pro.offerPrice || pro.mrp}</h6>
                       </div>
                     </Link>
                   ))}

@@ -119,7 +119,7 @@ function Wishlist() {
                               <i className="bi bi-star-half"></i>
                             </div>
 
-                            <h6>${price}</h6>
+                            <h6>₹{price}</h6>
 
                             <hr />
                             <div className="add-delete">

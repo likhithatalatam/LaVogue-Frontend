@@ -122,7 +122,7 @@ function Home() {
             </span>
           </div>
 
-          <h6>${product.offerPrice ? product.offerPrice : product.mrp}</h6>
+          <h6>₹{product.offerPrice ? product.offerPrice : product.mrp}</h6>
         </div>
       </Link>
     );

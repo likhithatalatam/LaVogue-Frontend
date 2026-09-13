@@ -369,7 +369,7 @@ function Checkout() {
 
                       return (
                         <p key={`${product._id}-price-${index}`}>
-                          ${(price * quantity).toFixed(2)}
+                          ₹{(price * quantity).toFixed(2)}
                         </p>
                       );
                     })}
@@ -381,7 +381,7 @@ function Checkout() {
                 <div className="order3">
                   <p>SUBTOTAL</p>
 
-                  <p>${subtotal.toFixed(2)}</p>
+                  <p>₹{subtotal.toFixed(2)}</p>
                 </div>
 
                 {/* DEDUCTION */}
@@ -389,7 +389,7 @@ function Checkout() {
                 <div className="order4">
                   <p>DEDUCTION</p>
 
-                  <p>-${deduction.toFixed(2)}</p>
+                  <p>-₹{deduction.toFixed(2)}</p>
                 </div>
 
                 <hr
@@ -403,7 +403,7 @@ function Checkout() {
                 <div className="order5">
                   <p>TOTAL</p>
 
-                  <p>${total.toFixed(2)}</p>
+                  <p>₹{total.toFixed(2)}</p>
                 </div>
               </div>
             </div>

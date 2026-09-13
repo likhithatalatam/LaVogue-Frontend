@@ -161,7 +161,7 @@ function Cart() {
                           )}
                         </td>
 
-                        <td>${price.toFixed(2)}</td>
+                        <td>₹{price.toFixed(2)}</td>
 
                         <td>
                           <input
@@ -175,7 +175,7 @@ function Cart() {
                           />
                         </td>
 
-                        <td>${(price * quantity).toFixed(2)}</td>
+                        <td>₹{(price * quantity).toFixed(2)}</td>
 
                         <td>
                           <i
@@ -223,21 +223,21 @@ function Cart() {
                 <div className="c">
                   <div className="price-row">
                     <span>SUBTOTAL</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>₹{subtotal.toFixed(2)}</span>
                   </div>
 
                   <hr />
 
                   <div className="price-row">
                     <span>DEDUCTION</span>
-                    <span>-${deduction.toFixed(2)}</span>
+                    <span>-₹{deduction.toFixed(2)}</span>
                   </div>
 
                   <hr />
 
                   <div className="price-row total">
                     <span>TOTAL</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>₹{total.toFixed(2)}</span>
                   </div>
 
                   <div className="checkout-buttons">
