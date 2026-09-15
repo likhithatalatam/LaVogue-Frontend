@@ -298,8 +298,6 @@ function MyProfile() {
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    localStorage.removeItem("cart");
-    localStorage.removeItem("wishlist");
 
     alert("Logged out successfully");
 
@@ -337,7 +335,7 @@ function MyProfile() {
                   src={
                     profile.profileImage
                       ? getImageUrl(profile.profileImage)
-                      : "/images/card4.jpg"
+                      : "/images/ca.jpg"
                   }
                   alt="Profile"
                 />

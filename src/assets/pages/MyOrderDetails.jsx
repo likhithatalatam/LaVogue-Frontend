@@ -8,6 +8,7 @@ function MyOrderDetails() {
 
   const navigate = useNavigate();
   const location = useLocation();
+  const [user, setUser] = useState(null);
 
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -57,6 +58,11 @@ function MyOrderDetails() {
       }
     };
 
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser) {
+      setUser(storedUser);
+    } 
     fetchOrder();
   }, [id, navigate]);
 
@@ -151,7 +157,14 @@ function MyOrderDetails() {
           <div className="main-container">
             <div className="side-header">
               <div className="profile-img">
-                <img src="/images/card4.jpg" alt="Profile" />
+                <img
+                  src={
+                    user?.profileImage
+                      ? getImageUrl(user.profileImage)
+                      : "/images/ca.jpg"
+                  }
+                  alt="Profile"
+                />
               </div>
 
               <h4>My Account</h4>
@@ -205,8 +218,7 @@ function MyOrderDetails() {
                         e.preventDefault();
 
                         localStorage.removeItem("token");
-                        localStorage.removeItem("cart");
-                        localStorage.removeItem("wishlist");
+                        localStorage.removeItem("user");
 
                         alert("Logged out successfully");
 

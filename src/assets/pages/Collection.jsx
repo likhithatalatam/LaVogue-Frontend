@@ -62,7 +62,7 @@ function Collection() {
   }, [searchQuery]);
 
   const getPrice = (product) => {
-    return Number(product.mrp) || 0;
+    return Number(product.offerPrice || product.mrp) || 0;
   };
 
   const minProductPrice = useMemo(() => {
@@ -71,7 +71,7 @@ function Collection() {
     }
 
     const prices = products
-      .map((product) => Number(product.mrp) || 0)
+      .map((product) => Number(product.offerPrice || product.mrp) || 0)
       .filter((price) => price > 0);
 
     if (!prices.length) {
@@ -86,7 +86,11 @@ function Collection() {
       return 0;
     }
 
-    return Math.max(...products.map((product) => Number(product.mrp) || 0));
+    return Math.max(
+      ...products.map(
+        (product) => Number(product.offerPrice || product.mrp) || 0,
+      ),
+    );
   }, [products]);
 
   useEffect(() => {

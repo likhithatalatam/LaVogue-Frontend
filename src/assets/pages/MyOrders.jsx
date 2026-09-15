@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/MyProfile.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import API from "../../api";
+import API, { getImageUrl } from "../../api";
 
 function MyOrders() {
   const navigate = useNavigate();
@@ -9,6 +9,7 @@ function MyOrders() {
 
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
   const isProfileActive = location.pathname === "/myprofile";
 
@@ -52,6 +53,12 @@ function MyOrders() {
         setLoading(false);
       }
     };
+
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (storedUser) {
+      setUser(storedUser);
+    }
 
     fetchMyOrders();
   }, [navigate]);
@@ -131,7 +138,14 @@ function MyOrders() {
           <div className="main-container">
             <div className="side-header">
               <div className="profile-img">
-                <img src="/images/card4.jpg" alt="Profile" />
+                <img
+                  src={
+                    user?.profileImage
+                      ? getImageUrl(user.profileImage)
+                      : "/images/ca.jpg"
+                  }
+                  alt="Profile"
+                />
               </div>
 
               <h4>My Account</h4>
@@ -185,8 +199,7 @@ function MyOrders() {
                         e.preventDefault();
 
                         localStorage.removeItem("token");
-                        localStorage.removeItem("cart");
-                        localStorage.removeItem("wishlist");
+                        localStorage.removeItem("user");
 
                         alert("Logged out successfully");
 

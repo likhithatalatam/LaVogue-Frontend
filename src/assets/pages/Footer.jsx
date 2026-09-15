@@ -1,7 +1,26 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import API from "../../api";
 
 function Footer() {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const res = await API.get("/categories");
+
+        if (res.data.success) {
+          setCategories(res.data.data || []);
+        }
+      } catch (error) {
+        console.log("Failed to fetch categories:", error);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+
   return (
     <section>
       <footer>
@@ -42,41 +61,16 @@ function Footer() {
             <div className="footer-row">
               <h4>Category</h4>
 
-              <div className="icons">
-                <i className="bi bi-chevron-double-right"></i>
-                <p>
-                  <Link to="/collection?category=Tops%20%26%20Outwear">
-                    Tops & Outwear
-                  </Link>
-                </p>
-              </div>
-
-              <div className="icons">
-                <i className="bi bi-chevron-double-right"></i>
-                <p>
-                  <Link to="/collection?category=Bottoms%20%26%20Jumpsuits">
-                    Bottoms & Jumpsuits
-                  </Link>
-                </p>
-              </div>
-
-              <div className="icons">
-                <i className="bi bi-chevron-double-right"></i>
-                <p>
-                  <Link to="/collection?category=Dresses">Dresses</Link>
-                </p>
-              </div>
-
-              <div className="icons">
-                <i className="bi bi-chevron-double-right"></i>
-                <p>
-                  <Link to="/collection?category=Activewear%20%26%20Athleisure">
-                    Activewear & Athleisure
-                  </Link>
-                </p>
-              </div>
-
-              {/* <p><a href="">Sleepwear</a></p> */}
+              {categories.map((category) => (
+                <div className="icons" key={category._id}>
+                  <i className="bi bi-chevron-double-right"></i>
+                  <p>
+                    <Link to={`/collection?category=${category._id}`}>
+                      {category.categoryName}
+                    </Link>
+                  </p>
+                </div>
+              ))}
             </div>
 
             <div className="footer-row">

@@ -198,8 +198,8 @@ function App() {
         }
 
         .lavogue-splash-logo {
-          width: 200px;
-          height: 200px;
+          width: 300px;
+          height: 300px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -247,15 +247,15 @@ function App() {
 
         @media (max-width: 600px) {
           .lavogue-splash-logo {
-            width: 150px;
-            height: 150px;
+            width: 170px;
+            height: 170px;
           }
         }
 
         @media (max-width: 380px) {
           .lavogue-splash-logo {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
           }
         }
       `}</style>
