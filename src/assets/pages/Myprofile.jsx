@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import "../css/MyProfile.css";
 import { useLocation, useNavigate } from "react-router-dom";
 import API, { getImageUrl } from "../../api";
+import Cropper from "react-easy-crop";
 
 function MyProfile() {
   const navigate = useNavigate();
@@ -22,6 +23,11 @@ function MyProfile() {
   const [uploadingImage, setUploadingImage] = useState(false);
 
   const isProfileActive = location.pathname === "/myprofile";
+
+  const [crop, setCrop] = useState({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState(1);
+  const [croppingImage, setCroppingImage] = useState(null);
+  const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
 
   const isOrdersActive =
     location.pathname === "/myorders" ||
@@ -85,29 +91,89 @@ function MyProfile() {
     }));
   };
 
-  const handleImageChange = async (e) => {
-    const file = e.target.files?.[0];
+  const createImage = (url) =>
+    new Promise((resolve, reject) => {
+      const image = new Image();
 
-    if (!file) return;
+      image.addEventListener("load", () => resolve(image));
+      image.addEventListener("error", (error) => reject(error));
 
-    if (!file.type.startsWith("image/")) {
-      alert("Please select an image file");
-      return;
+      image.setAttribute("crossOrigin", "anonymous");
+      image.src = url;
+    });
+
+  const getCroppedImg = async (imageSrc, pixelCrop) => {
+    const image = await createImage(imageSrc);
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.width = pixelCrop.width;
+    canvas.height = pixelCrop.height;
+
+    ctx.drawImage(
+      image,
+      pixelCrop.x,
+      pixelCrop.y,
+      pixelCrop.width,
+      pixelCrop.height,
+      0,
+      0,
+      pixelCrop.width,
+      pixelCrop.height,
+    );
+
+    return new Promise((resolve) => {
+      canvas.toBlob(
+        (blob) => {
+          resolve(blob);
+        },
+        "image/jpeg",
+        0.9,
+      );
+    });
+  };
+
+  const handleCropComplete = (_, croppedPixels) => {
+    setCroppedAreaPixels(croppedPixels);
+  };
+
+  const handleCropCancel = () => {
+    setCroppingImage(null);
+    setCroppedAreaPixels(null);
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
+
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
     }
+  };
 
-    const token = localStorage.getItem("token");
-
-    if (!token) {
-      alert("Please login first");
-      navigate("/login");
-      return;
-    }
+  const handleCropSave = async () => {
+    if (!croppingImage || !croppedAreaPixels) return;
 
     try {
       setUploadingImage(true);
 
+      const croppedBlob = await getCroppedImg(
+        croppingImage.url,
+        croppedAreaPixels,
+      );
+
+      const croppedFile = new File([croppedBlob], croppingImage.file.name, {
+        type: "image/jpeg",
+      });
+
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        alert("Please login first");
+        navigate("/login");
+        return;
+      }
+
       const formData = new FormData();
-      formData.append("profileImage", file);
+      formData.append("profileImage", croppedFile);
 
       const res = await API.put("/users/profile/image", formData, {
         headers: {
@@ -134,6 +200,7 @@ function MyProfile() {
         );
 
         alert("Profile photo updated successfully");
+        handleCropCancel();
       }
     } catch (error) {
       console.log("PROFILE IMAGE ERROR:", error);
@@ -143,7 +210,6 @@ function MyProfile() {
         localStorage.removeItem("user");
 
         alert("Session expired. Please login again");
-
         navigate("/login");
       } else {
         alert(
@@ -152,11 +218,28 @@ function MyProfile() {
       }
     } finally {
       setUploadingImage(false);
-
-      if (fileInputRef.current) {
-        fileInputRef.current.value = "";
-      }
     }
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files?.[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("Please select an image file");
+      return;
+    }
+
+    const imageUrl = URL.createObjectURL(file);
+
+    setCroppingImage({
+      url: imageUrl,
+      file,
+    });
+
+    setCrop({ x: 0, y: 0 });
+    setZoom(1);
   };
 
   const handleSubmit = async (e) => {
@@ -412,6 +495,57 @@ function MyProfile() {
           </div>
         </div>
       </header>
+      {croppingImage && (
+        <div className="crop-overlay">
+          <div className="crop-container">
+            <h3>Crop Profile Photo</h3>
+
+            <div className="crop-area">
+              <Cropper
+                image={croppingImage.url}
+                crop={crop}
+                zoom={zoom}
+                aspect={1}
+                cropShape="round"
+                showGrid={false}
+                onCropChange={setCrop}
+                onCropComplete={handleCropComplete}
+                onZoomChange={setZoom}
+              />
+            </div>
+
+            <div className="crop-zoom">
+              <label>Zoom</label>
+              <input
+                type="range"
+                min="1"
+                max="3"
+                step="0.1"
+                value={zoom}
+                onChange={(e) => setZoom(Number(e.target.value))}
+              />
+            </div>
+
+            <div className="crop-buttons">
+              <button
+                type="button"
+                onClick={handleCropCancel}
+                disabled={uploadingImage}
+              >
+                Cancel
+              </button>
+
+              <button
+                type="button"
+                onClick={handleCropSave}
+                disabled={uploadingImage}
+              >
+                {uploadingImage ? "Saving..." : "Save"}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }

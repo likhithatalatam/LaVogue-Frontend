@@ -12,6 +12,7 @@ function Home() {
   const [homeData, setHomeData] = useState({
     heroBanners: [],
     carouselImages: [],
+    couponBanners: [],
     bestSellerLimit: 8,
     bestSellerActive: true,
     bestSellers: [],
@@ -40,6 +41,7 @@ function Home() {
           setHomeData({
             heroBanners: homeRes.data.data?.heroBanners || [],
             carouselImages: homeRes.data.data?.carouselImages || [],
+            couponBanners: homeRes.data.data?.couponBanners || [],
             bestSellerLimit: homeRes.data.data?.bestSellerLimit || 8,
             bestSellerActive: homeRes.data.data?.bestSellerActive ?? true,
             bestSellers: homeRes.data.data?.bestSellers || [],
@@ -160,15 +162,15 @@ function Home() {
               data-bs-ride="carousel"
             >
               <div className="carousel-inner">
-                {activeHeroBanners.length > 0 ? (
-                  activeHeroBanners.map((banner, index) => (
+                {activeCarouselImages.length > 0 ? (
+                  activeCarouselImages.map((banner, index) => (
                     <div
                       className={`carousel-item ${index === 0 ? "active" : ""}`}
                       data-bs-interval={index === 0 ? "10000" : "2000"}
                       key={banner._id}
                     >
-                      {banner.buttonLink ? (
-                        <Link to={banner.buttonLink}>
+                      {banner.link ? (
+                        <Link to={banner.link}>
                           <img
                             src={getImageUrl(banner.image)}
                             className="d-block w-100"
@@ -338,18 +340,18 @@ function Home() {
 
         <section>
           <div className="banner1">
-            {activeCarouselImages.length > 0 ? (
-              activeCarouselImages[0].link ? (
-                <Link to={activeCarouselImages[0].link}>
+            {activeHeroBanners.length > 0 ? (
+              activeHeroBanners[0].buttonLink ? (
+                <Link to={activeHeroBanners[0].buttonLink}>
                   <img
-                    src={getImageUrl(activeCarouselImages[0].image)}
-                    alt={activeCarouselImages[0].title || "Collection"}
+                    src={getImageUrl(activeHeroBanners[0].image)}
+                    alt={activeHeroBanners[0].title || "Promotional Banner"}
                   />
                 </Link>
               ) : (
                 <img
-                  src={getImageUrl(activeCarouselImages[0].image)}
-                  alt={activeCarouselImages[0].title || "Collection"}
+                  src={getImageUrl(activeHeroBanners[0].image)}
+                  alt={activeHeroBanners[0].title || "Promotional Banner"}
                 />
               )
             ) : (
@@ -381,11 +383,30 @@ function Home() {
         <section>
           <div className="coupens-section">
             <div className="coupens">
-              <img src="/images/coupen6.jpeg" alt="" />
-
-              <img src="/images/coupen8.jpeg" alt="" />
-
-              <img src="/images/coupen7.jpeg" alt="" />
+              {homeData.couponBanners.length > 0 ? (
+                homeData.couponBanners.map((coupon) =>
+                  coupon.link ? (
+                    <Link to={coupon.link} key={coupon._id}>
+                      <img
+                        src={getImageUrl(coupon.image)}
+                        alt={coupon.title || "Coupon"}
+                      />
+                    </Link>
+                  ) : (
+                    <img
+                      key={coupon._id}
+                      src={getImageUrl(coupon.image)}
+                      alt={coupon.title || "Coupon"}
+                    />
+                  ),
+                )
+              ) : (
+                <>
+                  <img src="/images/coupen6.jpeg" alt="" />
+                  <img src="/images/coupen8.jpeg" alt="" />
+                  <img src="/images/coupen7.jpeg" alt="" />
+                </>
+              )}
             </div>
           </div>
         </section>

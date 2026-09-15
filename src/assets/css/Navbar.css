@@ -2536,7 +2536,7 @@ body {
 
   .navbar-container .search-field img {
     left: 8px;
-    width: 22px;
+    width: 29px;
     height: 13px;
   }
 
@@ -2651,7 +2651,7 @@ body {
   .navbar-container .search-field img {
     left: 8px;
 
-    width: 20px;
+    width: 29px;
     height: 13px;
   }
 
@@ -2769,15 +2769,12 @@ body {
   }
 
   .navbar-container .search-field img {
-    position: absolute;
-
-    left: 7px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 21px;
+    width: 29px;
     height: 13px;
+    position: absolute;
+    top: 51%;
+    left: 5px;
+    transform: translateY(-50%);
   }
 
   .navbar-container .categories {
@@ -3022,15 +3019,12 @@ body {
   }
 
   .navbar-container .search-field img {
-    position: absolute;
-
-    left: 4px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 20px;
+    width: 25px;
     height: 12px;
+    position: absolute;
+    top: 54%;
+    left: 5px;
+    transform: translateY(-50%);
   }
 
   .navbar-container .categories {
