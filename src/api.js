@@ -19,7 +19,12 @@ export const getImageUrl = (image) => {
   if (image.startsWith("http")) {
     return image;
   }
+
   const cleanImage = image.replace(/^\/?uploads\//, "");
+
+  if (/^[a-f\d]{24}$/i.test(cleanImage)) {
+    return `${BACKEND_URL}/api/images/${cleanImage}`;
+  }
 
   return `${BACKEND_URL}/uploads/${cleanImage}`;
 };
