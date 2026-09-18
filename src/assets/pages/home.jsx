@@ -194,7 +194,7 @@ function Home() {
                     >
                       <a href="#">
                         <img
-                          src="/images/carosouel7.png"
+                          src="/images/carosouel7.webp"
                           className="d-block w-100"
                           alt="Fashion collection"
                         />
@@ -204,7 +204,7 @@ function Home() {
                     <div className="carousel-item" data-bs-interval="2000">
                       <a href="#">
                         <img
-                          src="/images/carosouel8.png"
+                          src="/images/carosouel8.webp"
                           className="d-block w-100"
                           alt="Fashion collection"
                         />
@@ -214,7 +214,7 @@ function Home() {
                     <div className="carousel-item">
                       <a href="#">
                         <img
-                          src="/images/carosouel9.png"
+                          src="/images/carosouel9.webp"
                           className="d-block w-100"
                           alt="Fashion collection"
                         />
@@ -276,11 +276,11 @@ function Home() {
         <section>
           <div className="main-categories">
             <Link to="/collection">
-              <img src="/images/cat1.png" alt="" />
+              <img src="/images/cat1.webp" alt="" />
             </Link>
 
             <a href="#">
-              <img src="/images/cat2.png" alt="" />
+              <img src="/images/cat2.webp" alt="" />
             </a>
           </div>
         </section>
@@ -356,7 +356,10 @@ function Home() {
               )
             ) : (
               <a href="#">
-                <img src="/images/Fashion Sale Banner.png" alt="Fashion Sale" />
+                <img
+                  src="/images/Fashion Sale Banner.webp"
+                  alt="Fashion Sale"
+                />
               </a>
             )}
           </div>
@@ -495,11 +498,11 @@ function Home() {
                 <div className="banner3-imgset1">
                   <img className="ban-img1" src="/images/ban1.jpg" alt="" />
 
-                  <img className="ban-img2" src="/images/ban6.png" alt="" />
+                  <img className="ban-img2" src="/images/ban6.webp" alt="" />
                 </div>
 
                 <div className="banner3-imgset2">
-                  <img className="ban-img2" src="/images/ban7.png" alt="" />
+                  <img className="ban-img2" src="/images/ban7.webp" alt="" />
 
                   <img className="ban-img1" src="/images/ban2.jpg" alt="" />
                 </div>
